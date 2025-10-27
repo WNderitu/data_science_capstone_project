@@ -43,10 +43,15 @@ The Trophozoite, Schizont, Ring and Gametocyte are different growth stages of th
 
 The difficult category is a growth stage that couldn't be grouped into either of the 4 growth categories.
 
-## Image Pre-processing and Feature engineering
- - Data cleaning, which invloves checking for duplicate images, 
+## Image Data Cleaning and Image preprocessing
+ - Data cleaning involved checking for corrupted images, duplicate images, visually similar images, and class imbalance in the various categories.
+ - Image preprocessing will be done for data that will be used in the non-YOLO model.
+ - Image preprocessing is inbuilt in the YOLO model
 
 ## Machine learning Modelling
+You Only Look Once (YOLO) model and a Region Based Convolutional Neural Network will be used for object detection and counting. 
+
+### Model Architecture
 
 ## Recommendations/Next Steps
 
