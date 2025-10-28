@@ -54,8 +54,6 @@ Sample images from the dataset
 
 <img width="1293" height="1990" alt="image" src="https://github.com/user-attachments/assets/9dc47e0e-80c5-4288-9cdb-bfd8a2b09387" />
 
-<img width="1293" height="1990" alt="image" src="https://github.com/user-attachments/assets/6c98bade-f368-4803-a186-0deb5492f814" />
-
 Upon downloading the dataset, a folder called labels was created and the two json files moved to the folder.
 
 The training json file was renamed to train.json
