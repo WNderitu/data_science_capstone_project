@@ -64,14 +64,14 @@ The training json file was renamed to train.json
  - Data cleaning will involve checking for corrupted images, duplicate images, visually similar images, and class imbalance in the various categories.
  - Data preparation will involve the following:
    - Splitting images in the image sub folder into 2 folders: test & train images as the YOLOv8 model requires a specific folder structure i.e.
-   
-dataset/
+
+**dataset/
 ├── images/
 │   ├── train/
 │   └── val/
 └── labels/
     ├── train/
-    └── val/
+    └── val/**
 
    - Creation of a data.yaml File in the dataset's root directory, that describes the dataset, classes, and other necessary information.
      
