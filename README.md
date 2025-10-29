@@ -95,7 +95,8 @@ YOLO v8 has 24 convolutional layers, four max-pooling layers, and two fully conn
 ## Acknowledgements & Attributions
 
 1. We used image set BBBC041v1, available from the Broad Bioimage Benchmark Collection (Ljosa et al., Nature Methods, 2012)
+2. https://docs.ultralytics.com/datasets/
 
 ## References
 1. https://www.datacamp.com/blog/yolo-object-detection-explained
-2. 
+2. https://docs.ultralytics.com/datasets/
