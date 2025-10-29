@@ -24,14 +24,11 @@ The detection of Plasmodium vivax malaria remains challenging, primarily due to 
 
 ## Methodology
 This project employs YOLOv8 for multiclass object detection, leveraging its advanced capabilities to accurately identify and localize multiple object types within images or video frames. The methodology comprises several key steps to ensure robust and reproducible results.
-•	**Obtaining dataset**: Data will be obtained from Broad Bioimage Benchmark Collection webiste <https://bbbc.broadinstitute.org/BBBC041/>
-•	**Data Cleaning & Preparation**
+- **Obtaining dataset**: Data will be obtained from Broad Bioimage Benchmark Collection webiste <https://bbbc.broadinstitute.org/BBBC041/>
+- **Data Cleaning & Preparation**
    - Data cleaning will involve checking for corrupted images, duplicate images, visually similar images, and class imbalance in the various categories.
    - Data preparation will involve the following:
-   - Splitting images in the image sub folder into 2 folders: test & train images as the YOLOv8 model requires a specific folder structure i.e.
-
-<img width="139" height="157" alt="Screenshot 2025-10-28 at 21 52 49">
-     
+   - Splitting images in the image sub folder into 2 folders: test & train images as the YOLOv8 model requires a specific folder structure i.e.     
    - Creation of a data.yaml File in the dataset's root directory, that describes the dataset, classes, and other necessary information.
    - Convert existing JSON annotation format to the YOLOv8 format.The YOLOv8 format is TXT files with normalized bounding box coordinates.
 - **Model Configuration:** Select or customize a YOLOv8 architecture suitable for multiclass detection. Adjust hyperparameters such as learning rate, batch size, and number of epochs based on dataset size and complexity.
