@@ -29,16 +29,16 @@ This project employs YOLOv8 for multiclass object detection, leveraging its adva
    - Data cleaning will involve checking for corrupted images, duplicate images, visually similar images, and class imbalance in the various categories.
    - Data preparation will involve the following:
    - Splitting images in the image sub folder into 2 folders: test & train images as the YOLOv8 model requires a specific folder structure i.e.
-   - 
-    <img width="139" height="157" alt="Screenshot 2025-10-28 at 21 52 49" src="https://github.com/user-attachments/assets/c936bc6b-1d99-4a4a-ab82-5d8928b31afa" />
 
+<img width="139" height="157" alt="Screenshot 2025-10-28 at 21 52 49">
+     
    - Creation of a data.yaml File in the dataset's root directory, that describes the dataset, classes, and other necessary information.
-   - Convert existing JSON annotation format to the YOLOv8 format.The YOLOv8 format is TXT files with normalized bounding box coordinates. 
-•	**Model Configuration:** Select or customize a YOLOv8 architecture suitable for multiclass detection. Adjust hyperparameters such as learning rate, batch size, and number of epochs based on dataset size and complexity.
-•	**Training:** Train the YOLOv8 model on the annotated dataset using GPU acceleration if available, monitoring performance metrics like mean Average Precision (mAP) and loss curves to assess learning progress.
-•	**Evaluation:** Evaluate the trained model on the test set, analyzing precision, recall, and mAP for each object class to determine detection accuracy and robustness.
-•	**Deployment:** Integrate the trained YOLOv8 model into the target application, optimizing for real-time inference if required. Test the model in live scenarios to validate its practical effectiveness.
-•	**Post-processing:** Apply non-maximum suppression and confidence thresholding to filter overlapping detections and minimize false positives.
+   - Convert existing JSON annotation format to the YOLOv8 format.The YOLOv8 format is TXT files with normalized bounding box coordinates.
+- **Model Configuration:** Select or customize a YOLOv8 architecture suitable for multiclass detection. Adjust hyperparameters such as learning rate, batch size, and number of epochs based on dataset size and complexity.
+- **Training:** Train the YOLOv8 model on the annotated dataset using GPU acceleration if available, monitoring performance metrics like mean Average Precision (mAP) and loss curves to assess learning progress.
+- **Evaluation:** Evaluate the trained model on the test set, analyzing precision, recall, and mAP for each object class to determine detection accuracy and robustness.
+- **Deployment:** Integrate the trained YOLOv8 model into the target application, optimizing for real-time inference if required. Test the model in live scenarios to validate its practical effectiveness.
+- **Post-processing:** Apply non-maximum suppression and confidence thresholding to filter overlapping detections and minimize false positives.
 
 Throughout the project, regular validation and hyperparameter tuning are performed to maximize detection performance across all object classes. The methodology ensures scalability and adaptability for various computer vision applications.
 
