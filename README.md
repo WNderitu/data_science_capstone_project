@@ -28,7 +28,10 @@ This project employs YOLOv8 for multiclass object detection, leveraging its adva
 - **Data Cleaning & Preparation**
    - Data cleaning will involve checking for corrupted images, duplicate images, visually similar images, and class imbalance in the various categories.
    - Data preparation will involve the following:
-   - Splitting images in the image sub folder into 2 folders: test & train images as the YOLOv8 model requires a specific folder structure i.e.     
+   - Splitting images in the image sub folder into 2 folders: test & train images as the YOLOv8 model requires a specific folder structure i.e.
+ 
+      <img width="152" height="166" alt="Screenshot 2025-10-29 at 21 02 23" src="https://github.com/user-attachments/assets/d663834b-99f3-4814-9645-d91fe7469887" />
+
    - Creation of a data.yaml File in the dataset's root directory, that describes the dataset, classes, and other necessary information.
    - Convert existing JSON annotation format to the YOLOv8 format.The YOLOv8 format is TXT files with normalized bounding box coordinates.
 - **Model Configuration:** Select or customize a YOLOv8 architecture suitable for multiclass detection. Adjust hyperparameters such as learning rate, batch size, and number of epochs based on dataset size and complexity.
