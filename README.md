@@ -22,7 +22,7 @@ The detection of Plasmodium vivax malaria remains challenging, primarily due to 
 4.	To detect the growth stage of a Plasmodium Vivax (malaria parasite) in human blood cells in a microscopic image from a blood smear using the developed YOLOv8 model
 5.	 To count the number of detected growth stages of the plasmodium vivax parasites per microscopic image using the developed YOLOv8 model
 
-## Methodology
+## Project Description
 This project employs YOLOv8 for multiclass object detection, leveraging its advanced capabilities to accurately identify and localize multiple object types within images or video frames. The methodology comprises several key steps to ensure robust and reproducible results.
 - **Obtaining dataset**: Data will be obtained from Broad Bioimage Benchmark Collection webiste <https://bbbc.broadinstitute.org/BBBC041/>
 - **Data Cleaning & Preparation**
@@ -32,7 +32,7 @@ This project employs YOLOv8 for multiclass object detection, leveraging its adva
  
       <img width="152" height="166" alt="Screenshot 2025-10-29 at 21 02 23" src="https://github.com/user-attachments/assets/d663834b-99f3-4814-9645-d91fe7469887" />
 
-   - Creation of a data.yaml File in the dataset's root directory, that describes the dataset, classes, and other necessary information.
+   - Creation of a data.yaml file in the dataset's root directory, that describes the dataset, classes, and other necessary information.
    - Convert existing JSON annotation format to the YOLOv8 format.The YOLOv8 format is TXT files with normalized bounding box coordinates.
 - **Model Configuration:** Select or customize a YOLOv8 architecture suitable for multiclass detection. Adjust hyperparameters such as learning rate, batch size, and number of epochs based on dataset size and complexity.
 - **Training:** Train the YOLOv8 model on the annotated dataset using GPU acceleration if available, monitoring performance metrics like mean Average Precision (mAP) and loss curves to assess learning progress.
@@ -42,7 +42,7 @@ This project employs YOLOv8 for multiclass object detection, leveraging its adva
 
 Throughout the project, regular validation and hyperparameter tuning are performed to maximize detection performance across all object classes. The methodology ensures scalability and adaptability for various computer vision applications.
 
-### Image Dataset
+## Image Dataset
 
 Images obtained from Broad Bioimage Benchmark Collection webiste <https://bbbc.broadinstitute.org/BBBC041/>
 
@@ -76,7 +76,7 @@ Upon downloading the dataset, a folder called labels was created and the two jso
 
 The training json file was renamed to train.json
   
-### Deep learning Model Architecture
+## Deep learning Model Architecture
 
 The You Only Look Once (YOLO) models are single stage detectors that predict bounding boxes and class probabilities directly from the entire image. The YOLO version 8 model (YOLOv8) will be used for object detection and counting. The model size to be used is yolov8n (Nano) which has about 3 Million parameters, is the fastest, suitable for small datasets and computers with limited GPU. However, it's accuracy is lower than other bigger sizes of YOLOv8 models. 
 
