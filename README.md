@@ -42,7 +42,7 @@ This project employs YOLOv8 for multiclass object detection, leveraging its adva
 
 Throughout the project, regular validation and hyperparameter tuning are performed to maximize detection performance across all object classes. The methodology ensures scalability and adaptability for various computer vision applications.
 
-## Image Dataset
+### Image Dataset
 
 Images obtained from Broad Bioimage Benchmark Collection webiste <https://bbbc.broadinstitute.org/BBBC041/>
 
@@ -51,7 +51,7 @@ The dataset consists of:
 - training json file
 - test json file
 
-The dataset consists of 1,328 microscopic images of blood smears. 
+The dataset consists of 1,328 microscopic images of blood smears. A class label and set of bounding box coordinates were given for each cell.  
 
 The various categories to be detected are 7.
 - Red Blood Cell (uninfected)
@@ -76,11 +76,16 @@ Upon downloading the dataset, a folder called labels was created and the two jso
 
 The training json file was renamed to train.json
   
-## Machine learning Model Architecture
+### Deep learning Model Architecture
 
-You Only Look Once (YOLO) v8 model will be used for object detection and counting. 
+The You Only Look Once (YOLO) models are single stage detectors that predict bounding boxes and class probabilities directly from the entire image. The YOLO version 8 model (YOLOv8) will be used for object detection and counting. The model size to be used is yolov8n (Nano) which has about 3 Million parameters, is the fastest, suitable for small datasets and computers with limited GPU. However, it's accuracy is lower than other bigger sizes of YOLOv8 models. 
 
-
+YOLO v8 has 24 convolutional layers, four max-pooling layers, and two fully connected layers. The architecture works as follows:
+- Resizes the input image into 448x448 before going through the convolutional network.
+- A 1x1 convolution is first applied to reduce the number of channels, followed by a 3x3 convolution to generate a cuboidal output.
+- The activation function under the hood is ReLU, except for the final layer, which uses a linear activation function.
+- Some additional techniques, such as batch normalization and dropout, regularize the model and prevent it from overfitting.
+  
 ## Results
 
 ## Recommendations/Next Steps
@@ -89,6 +94,8 @@ You Only Look Once (YOLO) v8 model will be used for object detection and countin
 
 ## Acknowledgements & Attributions
 
-We used image set BBBC041v1, available from the Broad Bioimage Benchmark Collection (Ljosa et al., Nature Methods, 2012)
+1. We used image set BBBC041v1, available from the Broad Bioimage Benchmark Collection (Ljosa et al., Nature Methods, 2012)
 
 ## References
+1. https://www.datacamp.com/blog/yolo-object-detection-explained
+2. 
