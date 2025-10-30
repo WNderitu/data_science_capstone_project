@@ -88,7 +88,8 @@ Backbone (feature extractor) - this consists of the CNN that is responsible for 
 Neck - this merges/fuses feature maps from the different stages of the backbone to capture information at various scales. 
 Head - this is responsible for making predictions. It takes the merged features from the neck and outputs bounding box coordinates, class probabilities, and confidence scores for detected objects. The Head typically consists of multiple detection heads, each connected to a different output scale from the Neck, enabling the prediction of objects at various sizes. Post-processing techniques like non-maximum suppression (NMS) are applied to filter out redundant or overlapping bounding box predictions, resulting in the final set of detected objects.
 
-<img width="850" height="284" alt="image" src="https://github.com/user-attachments/assets/aae910ce-9ced-4eef-bcb6-52bf67ced124" />
+<img width="1207" height="1122" alt="image" src="https://github.com/user-attachments/assets/4665efe1-8dd4-4cbc-b2f1-d57c7475b34c" />
+
 
 Evaluation metrics used will be interesection over union (IOU), precision, recall, average precison(AP) and mean average precision (mAP).
 •	Intersection over Union (IoU): This measures the overlap between the model's predicted bounding box and the actual ground truth bounding box. An IoU of 1 means perfect overlap, while 0 means no overlap. A common threshold (e.g., 0.5 or 0.75) is set to consider a detection as a True Positive.
