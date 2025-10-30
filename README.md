@@ -83,20 +83,19 @@ The You Only Look Once (YOLO) model is a single stage detector that predicts bou
 The YOLO version 8 model (YOLOv8) will be used for object detection and counting. The model size to be used is yolov8n (Nano) which has about 3 million parameters, is the fastest, suitable for small datasets and computers with limited GPU. However, it's accuracy is lower than other bigger sizes of YOLOv8 models. 
 
 The model is dividied into three main components:
-
-Backbone (feature extractor) - this consists of the CNN that is responsible for extracting hierarchical features from the input image.
-Neck - this merges/fuses feature maps from the different stages of the backbone to capture information at various scales. 
-Head - this is responsible for making predictions. It takes the merged features from the neck and outputs bounding box coordinates, class probabilities, and confidence scores for detected objects. The Head typically consists of multiple detection heads, each connected to a different output scale from the Neck, enabling the prediction of objects at various sizes. Post-processing techniques like non-maximum suppression (NMS) are applied to filter out redundant or overlapping bounding box predictions, resulting in the final set of detected objects.
+- **Backbone (feature extractor)** - this consists of the CNN that is responsible for extracting hierarchical features from the input image.
+- **Neck** - this merges/fuses feature maps from the different stages of the backbone to capture information at various scales.
+- **Head** - this is responsible for making predictions. It takes the merged features from the neck and outputs bounding box coordinates, class probabilities, and confidence scores for detected objects. The Head typically consists of multiple detection heads, each connected to a different output scale from the Neck, enabling the prediction of objects at various sizes. Post-processing techniques like non-maximum suppression (NMS) are applied to filter out redundant or overlapping bounding box predictions, resulting in the final set of detected objects.
 
 <img width="1207" height="1122" alt="image" src="https://github.com/user-attachments/assets/4665efe1-8dd4-4cbc-b2f1-d57c7475b34c" />
 
 
 Evaluation metrics used will be interesection over union (IOU), precision, recall, average precison(AP) and mean average precision (mAP).
-•	Intersection over Union (IoU): This measures the overlap between the model's predicted bounding box and the actual ground truth bounding box. An IoU of 1 means perfect overlap, while 0 means no overlap. A common threshold (e.g., 0.5 or 0.75) is set to consider a detection as a True Positive.
-•	Precision: This is the ratio of correctly predicted positive detections (True Positives) to the total number of positive detections (True Positives + False Positives). It tells you how accurate the model is when it predicts an object is present.
-•	Recall: This is the ratio of correctly predicted positive detections (True Positives) to the total number of actual positive objects in the image (True Positives + False Negatives). It tells you how many of the actual objects the model was able to find.
-•	Average Precision (AP): This is the area under the Precision-Recall curve for a single class. It gives a single number that summarizes the precision and recall performance for that class across different confidence thresholds.
-•	Mean Average Precision (mAP): This is the average of the Average Precisions (APs) across all the different classes. It provides an overall measure of the model's performance across all object categories.
+- Intersection over Union (IoU): This measures the overlap between the model's predicted bounding box and the actual ground truth bounding box. An IoU of 1 means perfect overlap, while 0 means no overlap. A common threshold (e.g., 0.5 or 0.75) is set to consider a detection as a True Positive.
+- Precision: This is the ratio of correctly predicted positive detections (True Positives) to the total number of positive detections (True Positives + False Positives). It tells you how accurate the model is when it predicts an object is present.
+- Recall: This is the ratio of correctly predicted positive detections (True Positives) to the total number of actual positive objects in the image (True Positives + False Negatives). It tells you how many of the actual objects the model was able to find.
+- Average Precision (AP): This is the area under the Precision-Recall curve for a single class. It gives a single number that summarizes the precision and recall performance for that class across different confidence thresholds.
+- Mean Average Precision (mAP): This is the average of the Average Precisions (APs) across all the different classes. It provides an overall measure of the model's performance across all object categories.
 
 ## Results
 
