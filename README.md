@@ -40,7 +40,7 @@ This project employs YOLOv8 for multiclass object detection, leveraging its adva
 - **Deployment:** Integrate the trained YOLOv8 model into the target application, optimizing for real-time inference if required. Test the model in live scenarios to validate its practical effectiveness.
 - **Post-processing:** Apply non-maximum suppression and confidence thresholding to filter overlapping detections and minimize false positives.
 
-Throughout the project, regular validation and hyperparameter tuning are performed to maximize detection performance across all object classes. The methodology ensures scalability and adaptability for various computer vision applications.
+Throughout the project, regular validation and hyperparameter tuning will be performed to maximize detection performance across all object classes. 
 
 ## Image Dataset
 
@@ -78,14 +78,25 @@ The training json file was renamed to train.json
   
 ## Deep learning Model Architecture
 
-The You Only Look Once (YOLO) models are single stage detectors that predict bounding boxes and class probabilities directly from the entire image. The YOLO version 8 model (YOLOv8) will be used for object detection and counting. The model size to be used is yolov8n (Nano) which has about 3 Million parameters, is the fastest, suitable for small datasets and computers with limited GPU. However, it's accuracy is lower than other bigger sizes of YOLOv8 models. 
+The You Only Look Once (YOLO) model is a single stage detector that predicts bounding boxes and class probabilities directly from the entire input image in a single forward pass, which makes the model faster than other object detetcion models. The model treats object detection as a single regression problem. 
 
-YOLO v8 has 24 convolutional layers, four max-pooling layers, and two fully connected layers. The architecture works as follows:
-- Resizes the input image into 448x448 before going through the convolutional network.
-- A 1x1 convolution is first applied to reduce the number of channels, followed by a 3x3 convolution to generate a cuboidal output.
-- The activation function under the hood is ReLU, except for the final layer, which uses a linear activation function.
-- Some additional techniques, such as batch normalization and dropout, regularize the model and prevent it from overfitting.
-  
+The YOLO version 8 model (YOLOv8) will be used for object detection and counting. The model size to be used is yolov8n (Nano) which has about 3 million parameters, is the fastest, suitable for small datasets and computers with limited GPU. However, it's accuracy is lower than other bigger sizes of YOLOv8 models. 
+
+The model is dividied into three main components:
+
+Backbone (feature extractor) - this consists of the CNN that is responsible for extracting hierarchical features from the input image.
+Neck - this merges/fuses feature maps from the different stages of the backbone to capture information at various scales. 
+Head - this is responsible for making predictions. It takes the merged features from the neck and outputs bounding box coordinates, class probabilities, and confidence scores for detected objects. The Head typically consists of multiple detection heads, each connected to a different output scale from the Neck, enabling the prediction of objects at various sizes. Post-processing techniques like non-maximum suppression (NMS) are applied to filter out redundant or overlapping bounding box predictions, resulting in the final set of detected objects.
+
+<img width="850" height="284" alt="image" src="https://github.com/user-attachments/assets/aae910ce-9ced-4eef-bcb6-52bf67ced124" />
+
+Evaluation metrics used will be interesection over union (IOU), precision, recall, average precison(AP) and mean average precision (mAP).
+•	Intersection over Union (IoU): This measures the overlap between the model's predicted bounding box and the actual ground truth bounding box. An IoU of 1 means perfect overlap, while 0 means no overlap. A common threshold (e.g., 0.5 or 0.75) is set to consider a detection as a True Positive.
+•	Precision: This is the ratio of correctly predicted positive detections (True Positives) to the total number of positive detections (True Positives + False Positives). It tells you how accurate the model is when it predicts an object is present.
+•	Recall: This is the ratio of correctly predicted positive detections (True Positives) to the total number of actual positive objects in the image (True Positives + False Negatives). It tells you how many of the actual objects the model was able to find.
+•	Average Precision (AP): This is the area under the Precision-Recall curve for a single class. It gives a single number that summarizes the precision and recall performance for that class across different confidence thresholds.
+•	Mean Average Precision (mAP): This is the average of the Average Precisions (APs) across all the different classes. It provides an overall measure of the model's performance across all object categories.
+
 ## Results
 
 ## Recommendations/Next Steps
