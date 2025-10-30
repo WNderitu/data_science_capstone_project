@@ -110,5 +110,5 @@ Evaluation metrics used will be interesection over union (IOU), precision, recal
 
 ## References
 1. https://www.who.int/health-topics/malaria#tab=tab_1
-2. https://www.datacamp.com/blog/yolo-object-detection-explained
-3. https://docs.ultralytics.com/datasets/
+2. https://docs.ultralytics.com/datasets/
+3. https://abintimilsina.medium.com/yolov8-architecture-explained-a5e90a560ce5
