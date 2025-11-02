@@ -91,13 +91,14 @@ Recall = TP / (TP + FN)
 - **Average Precision (AP)**: This is the area under the Precision-Recall curve for a single class. It gives a single number that summarizes the precision and recall performance for that class across different confidence thresholds.
 - **Mean Average Precision (mAP)**: This is the average of the Average Precisions (APs) across all the different classes. It provides an overall measure of the model's performance across all object categories. In YOLOv8, the **mAP@0.5** — IoU threshold = 0.5 (i.e., boxes overlap ≥ 50% to count as correct) and **mAP@0.5:0.95** — Mean mAP across IoU thresholds 0.5 to 0.95 (step 0.05) will be presented. 
 
-Counting evaluation metrics used will be: MAE (Mean Absolute Error), RMSE (Root Mean Square Error), MAPE (Mean Absolute Percentage Error) and R² (Coefficient of Determination). 
+**Counting evaluation metrics** used will be: MAE (Mean Absolute Error), RMSE (Root Mean Square Error), MAPE (Mean Absolute Percentage Error) and R² (Coefficient of Determination). 
 
 **MAE (Mean Absolute Error):** Measures the average absolute difference between predicted and true counts.
 
 <img width="380" height="76" alt="Screenshot 2025-11-02 at 18 06 18" src="https://github.com/user-attachments/assets/9b76dc61-269f-4b2e-a01b-2f1880f4fb9a" />
 
 **RMSE (Root Mean Square Error)**: Gives more weight to large counting errors.
+
 <img width="435" height="87" alt="Screenshot 2025-11-02 at 18 07 16" src="https://github.com/user-attachments/assets/a98048d3-ff32-4238-a992-9227f5ceee57" />
 
 **MAPE (Mean Absolute Percentage Error)**:Shows percentage deviation from true counts.
