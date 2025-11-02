@@ -23,24 +23,9 @@ The detection of Plasmodium vivax malaria remains challenging, primarily due to 
 5.	 To count the number of detected growth stages of the plasmodium vivax parasites per microscopic image using the developed YOLOv8 model
 
 ## Project Description
-This project employs YOLOv8 for multiclass object detection, leveraging its advanced capabilities to accurately identify and localize multiple object types within images or video frames. The methodology comprises several key steps to ensure robust and reproducible results.
-- **Obtaining dataset**: Data will be obtained from Broad Bioimage Benchmark Collection webiste <https://bbbc.broadinstitute.org/BBBC041/>
-- **Data Cleaning & Preparation**
-   - Data cleaning will involve checking for corrupted images, duplicate images, visually similar images, and class imbalance in the various categories.
-   - Data preparation will involve the following:
-   - Splitting images in the image sub folder into 2 folders: test & train images as the YOLOv8 model requires a specific folder structure i.e.
- 
-      <img width="152" height="166" alt="Screenshot 2025-10-29 at 21 02 23" src="https://github.com/user-attachments/assets/d663834b-99f3-4814-9645-d91fe7469887" />
+This project employs YOLOv8 for multiclass object detection, leveraging its advanced capabilities to accurately identify and localize multiple object types within images or video frames.
 
-   - Creation of a data.yaml file in the dataset's root directory, that describes the dataset, classes, and other necessary information.
-   - Convert existing JSON annotation format to the YOLOv8 format.The YOLOv8 format is TXT files with normalized bounding box coordinates.
-- **Model Configuration:** Select or customize a YOLOv8 architecture suitable for multiclass detection. Adjust hyperparameters such as learning rate, batch size, and number of epochs based on dataset size and complexity.
-- **Training:** Train the YOLOv8 model on the annotated dataset using GPU acceleration if available, monitoring performance metrics like mean Average Precision (mAP) and loss curves to assess learning progress.
-- **Evaluation:** Evaluate the trained model on the test set, analyzing precision, recall, and mAP for each object class to determine detection accuracy and robustness.
-- **Deployment:** Integrate the trained YOLOv8 model into the target application, optimizing for real-time inference if required. Test the model in live scenarios to validate its practical effectiveness.
-- **Post-processing:** Apply non-maximum suppression and confidence thresholding to filter overlapping detections and minimize false positives.
-
-Throughout the project, regular validation and hyperparameter tuning will be performed to maximize detection performance across all object classes. 
+<img width="394" height="635" alt="image" src="https://github.com/user-attachments/assets/e3eafc98-f7c9-4714-b608-2a1969a726d8" />
 
 ## Image Dataset
 
@@ -71,10 +56,6 @@ The difficult category is a growth stage that couldn't be grouped into either of
 Sample images from the dataset
 
 <img width="1293" height="1990" alt="image" src="https://github.com/user-attachments/assets/9dc47e0e-80c5-4288-9cdb-bfd8a2b09387" />
-
-Upon downloading the dataset, a folder called labels was created and the two json files moved to the folder.
-
-The training json file was renamed to train.json
   
 ## Deep learning Model Architecture
 
