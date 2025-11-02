@@ -84,7 +84,7 @@ Precision = TP / (TP + FP)
 
 Recall = TP / (TP + FN)
 
-**F1 Score**: Harmonic mean of precision and recall.YOLOv8 often reports best F1 (at optimal confidence threshold).
+- **F1 Score**: Harmonic mean of precision and recall.YOLOv8 often reports best F1 (at optimal confidence threshold).
 
 <img width="214" height="35" alt="Screenshot 2025-11-02 at 17 57 44" src="https://github.com/user-attachments/assets/293697af-cd78-4848-9c66-97ac24540aca" />
 
@@ -93,18 +93,18 @@ Recall = TP / (TP + FN)
 
 **Counting evaluation metrics** used will be: MAE (Mean Absolute Error), RMSE (Root Mean Square Error), MAPE (Mean Absolute Percentage Error) and R² (Coefficient of Determination). 
 
-**MAE (Mean Absolute Error):** Measures the average absolute difference between predicted and true counts.
+- **MAE (Mean Absolute Error):** Measures the average absolute difference between predicted and true counts.
 
 <img width="380" height="76" alt="Screenshot 2025-11-02 at 18 06 18" src="https://github.com/user-attachments/assets/9b76dc61-269f-4b2e-a01b-2f1880f4fb9a" />
 
-**RMSE (Root Mean Square Error)**: Gives more weight to large counting errors.
+- **RMSE (Root Mean Square Error)**: Gives more weight to large counting errors.
 
 <img width="435" height="87" alt="Screenshot 2025-11-02 at 18 07 16" src="https://github.com/user-attachments/assets/a98048d3-ff32-4238-a992-9227f5ceee57" />
 
-**MAPE (Mean Absolute Percentage Error)**:Shows percentage deviation from true counts.
+- **MAPE (Mean Absolute Percentage Error)**:Shows percentage deviation from true counts.
 <img width="435" height="81" alt="Screenshot 2025-11-02 at 18 08 14" src="https://github.com/user-attachments/assets/42cd01b1-303c-42fb-bc26-36b41580c2b0" />
 
-**R² (Coefficient of Determination)**: Indicates how well predicted counts fit the true counts. A higher value (closer to 1) means better counting accuracy.
+- **R² (Coefficient of Determination)**: Indicates how well predicted counts fit the true counts. A higher value (closer to 1) means better counting accuracy.
 
 ## Results
 
