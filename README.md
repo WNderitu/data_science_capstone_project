@@ -71,12 +71,25 @@ The model is dividied into three main components:
 <img width="1207" height="1122" alt="image" src="https://github.com/user-attachments/assets/4665efe1-8dd4-4cbc-b2f1-d57c7475b34c" />
 
 
-Evaluation metrics used will be interesection over union (IOU), precision, recall, average precison(AP) and mean average precision (mAP).
-- Intersection over Union (IoU): This measures the overlap between the model's predicted bounding box and the actual ground truth bounding box. An IoU of 1 means perfect overlap, while 0 means no overlap. A common threshold (e.g., 0.5 or 0.75) is set to consider a detection as a True Positive.
-- Precision: This is the ratio of correctly predicted positive detections (True Positives) to the total number of positive detections (True Positives + False Positives). It tells you how accurate the model is when it predicts an object is present.
-- Recall: This is the ratio of correctly predicted positive detections (True Positives) to the total number of actual positive objects in the image (True Positives + False Negatives). It tells you how many of the actual objects the model was able to find.
-- Average Precision (AP): This is the area under the Precision-Recall curve for a single class. It gives a single number that summarizes the precision and recall performance for that class across different confidence thresholds.
-- Mean Average Precision (mAP): This is the average of the Average Precisions (APs) across all the different classes. It provides an overall measure of the model's performance across all object categories.
+Evaluation metrics used will be interesection over union (IOU), precision, recall, F1 Score, average precison(AP) and mean average precision (mAP).
+- **Intersection over Union (IoU)**: This measures the overlap between the model's predicted bounding box and the actual ground truth bounding box. An IoU of 1 means perfect overlap, while 0 means no overlap. A common threshold (e.g., 0.5 or 0.75) is set to consider a detection as a True Positive. Higher IoU = better localization accuracy. This will be used to determine whether a prediction counts as a correct detection.
+  
+<img width="172" height="38" alt="Screenshot 2025-11-02 at 17 58 54" src="https://github.com/user-attachments/assets/7a788e3c-8038-46ee-90b7-c98468378cb3" />
+
+- **Precision**: This is the ratio of correctly predicted positive detections (True Positives) to the total number of positive detections (True Positives + False Positives).It tells you how accurate the model is when it predicts an object is present. High precision = fewer false detections.
+  
+Precision = TP / (TP + FP)
+
+- **Recall**: This is the ratio of correctly predicted positive detections (True Positives) to the total number of actual positive objects in the image (True Positives + False Negatives). It tells you how many of the actual objects the model was able to find. High recall = fewer missed detections.
+
+Recall = TP / (TP + FN)
+
+**F1 Score**: Harmonic mean of precision and recall.YOLOv8 often reports best F1 (at optimal confidence threshold).
+
+<img width="214" height="35" alt="Screenshot 2025-11-02 at 17 57 44" src="https://github.com/user-attachments/assets/293697af-cd78-4848-9c66-97ac24540aca" />
+
+- **Average Precision (AP)**: This is the area under the Precision-Recall curve for a single class. It gives a single number that summarizes the precision and recall performance for that class across different confidence thresholds.
+- **Mean Average Precision (mAP)**: This is the average of the Average Precisions (APs) across all the different classes. It provides an overall measure of the model's performance across all object categories. In YOLOv8, the **mAP@0.5** — IoU threshold = 0.5 (i.e., boxes overlap ≥ 50% to count as correct) and **mAP@0.5:0.95** — Mean mAP across IoU thresholds 0.5 to 0.95 (step 0.05) will be presented. 
 
 ## Results
 
