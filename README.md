@@ -71,7 +71,7 @@ The model is dividied into three main components:
 <img width="1207" height="1122" alt="image" src="https://github.com/user-attachments/assets/4665efe1-8dd4-4cbc-b2f1-d57c7475b34c" />
 
 
-Evaluation metrics used will be interesection over union (IOU), precision, recall, F1 Score, average precison(AP) and mean average precision (mAP).
+**Object detection evaluation metrics** used will be interesection over union (IOU), precision, recall, F1 Score, average precison(AP) and mean average precision (mAP).
 - **Intersection over Union (IoU)**: This measures the overlap between the model's predicted bounding box and the actual ground truth bounding box. An IoU of 1 means perfect overlap, while 0 means no overlap. A common threshold (e.g., 0.5 or 0.75) is set to consider a detection as a True Positive. Higher IoU = better localization accuracy. This will be used to determine whether a prediction counts as a correct detection.
   
 <img width="172" height="38" alt="Screenshot 2025-11-02 at 17 58 54" src="https://github.com/user-attachments/assets/7a788e3c-8038-46ee-90b7-c98468378cb3" />
@@ -90,6 +90,20 @@ Recall = TP / (TP + FN)
 
 - **Average Precision (AP)**: This is the area under the Precision-Recall curve for a single class. It gives a single number that summarizes the precision and recall performance for that class across different confidence thresholds.
 - **Mean Average Precision (mAP)**: This is the average of the Average Precisions (APs) across all the different classes. It provides an overall measure of the model's performance across all object categories. In YOLOv8, the **mAP@0.5** — IoU threshold = 0.5 (i.e., boxes overlap ≥ 50% to count as correct) and **mAP@0.5:0.95** — Mean mAP across IoU thresholds 0.5 to 0.95 (step 0.05) will be presented. 
+
+Counting evaluation metrics used will be: MAE (Mean Absolute Error), RMSE (Root Mean Square Error), MAPE (Mean Absolute Percentage Error) and R² (Coefficient of Determination). 
+
+**MAE (Mean Absolute Error):** Measures the average absolute difference between predicted and true counts.
+
+<img width="380" height="76" alt="Screenshot 2025-11-02 at 18 06 18" src="https://github.com/user-attachments/assets/9b76dc61-269f-4b2e-a01b-2f1880f4fb9a" />
+
+**RMSE (Root Mean Square Error)**: Gives more weight to large counting errors.
+<img width="435" height="87" alt="Screenshot 2025-11-02 at 18 07 16" src="https://github.com/user-attachments/assets/a98048d3-ff32-4238-a992-9227f5ceee57" />
+
+**MAPE (Mean Absolute Percentage Error)**:Shows percentage deviation from true counts.
+<img width="435" height="81" alt="Screenshot 2025-11-02 at 18 08 14" src="https://github.com/user-attachments/assets/42cd01b1-303c-42fb-bc26-36b41580c2b0" />
+
+**R² (Coefficient of Determination)**: Indicates how well predicted counts fit the true counts. A higher value (closer to 1) means better counting accuracy.
 
 ## Results
 
