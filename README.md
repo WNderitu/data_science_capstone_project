@@ -22,11 +22,6 @@ The detection of Plasmodium vivax malaria remains challenging, primarily due to 
 4.	To detect the growth stage of a Plasmodium Vivax (malaria parasite) in human blood cells in a microscopic image from a blood smear using the developed YOLOv8 model
 5.	 To count the number of detected growth stages of the plasmodium vivax parasites per microscopic image using the developed YOLOv8 model
 
-## Project Description
-This project employs YOLOv8 for multiclass object detection, leveraging its advanced capabilities to accurately identify and localize multiple object types within images or video frames.
-
-<img width="394" height="635" alt="image" src="https://github.com/user-attachments/assets/e3eafc98-f7c9-4714-b608-2a1969a726d8" />
-
 ## Image Dataset
 
 Images obtained from Broad Bioimage Benchmark Collection webiste <https://bbbc.broadinstitute.org/BBBC041/>
@@ -56,7 +51,11 @@ The difficult category is a growth stage that couldn't be grouped into either of
 Sample images from the dataset
 
 <img width="1293" height="1990" alt="image" src="https://github.com/user-attachments/assets/9dc47e0e-80c5-4288-9cdb-bfd8a2b09387" />
-  
+
+## Project Description
+This project employs YOLOv8 for multiclass object detection, leveraging its advanced capabilities to accurately identify and localize multiple object types within images or video frames.
+
+
 ## Deep learning Model Architecture
 
 The You Only Look Once (YOLO) model is a single stage detector that predicts bounding boxes and class probabilities directly from the entire input image in a single forward pass, which makes the model faster than other object detetcion models. The model treats object detection as a single regression problem. 
