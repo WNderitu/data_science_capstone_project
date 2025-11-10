@@ -2,6 +2,8 @@ import streamlit as st
 import cv2
 import numpy as np
 from PIL import Image
+from PIL import Image
+import os
 
 # Set page configuration
 st.set_page_config(
@@ -9,9 +11,17 @@ st.set_page_config(
     layout="wide"
 )
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # --- CONFIGURATION ---
-model_path = "best.onnx" # Path to the ONNX model file 
-classes_file = "classes.txt"
+model_path = os.path.join(BASE_DIR, "best.onnx")
+classes_file = os.path.join(BASE_DIR, "classes.txt")
+
+# --- DEBUGGING STEP (Temporary) ---
+st.sidebar.warning(f"CWD: {os.getcwd()}")
+st.sidebar.warning(f"BASE_DIR: {BASE_DIR}") 
+st.sidebar.warning(f"Classes Path: {classes_file}")
+# -----------------------------------
 
 @st.cache_resource # Cache the model loading
 def load_onnx_model(model_path):
@@ -20,7 +30,8 @@ def load_onnx_model(model_path):
         net = cv2.dnn.readNet(model_path)
         return net
     except Exception as e:
-        st.error(f"Error loading ONNX model: {e}")
+        # Include the full path in the error message for better diagnosis
+        st.error(f"Error loading ONNX model: {e}. Attempted path: {model_path}")
         return None
 
 @st.cache_data # Cache class names
@@ -30,7 +41,8 @@ def load_class_names(classes_file):
         with open(classes_file, "r") as f:
             return [line.strip() for line in f.readlines()]
     except Exception as e:
-        st.error(f"Error loading class names: {e}")
+        # Include the full path in the error message
+        st.error(f"Error loading class names: {e}. Attempted path: {classes_file}")
         return []
 
 # Load model and classes
