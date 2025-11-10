@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 # --- CONFIGURATION ---
-model_path = "yolov8.onnx" # Path to the ONNX model file 
+model_path = "best.onnx" # Path to the ONNX model file 
 classes_file = "classes.txt"
 
 @st.cache_resource # Cache the model loading
