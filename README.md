@@ -24,27 +24,21 @@ The detection of Plasmodium vivax malaria remains challenging, primarily due to 
 
 Images obtained from Broad Bioimage Benchmark Collection webiste <https://bbbc.broadinstitute.org/BBBC041/>
 
-The dataset consists of:
-- image folder
-- training json file
-- test json file
+the dayaset consists of image folder, training json file & test json file
 
-The dataset consists of 1,328 microscopic images of blood smears. A class label and set of bounding box coordinates were given for each cell.  
+There are 1,328 microscopic images of blood smears.
 
-The various categories to be detected are 7.
-- Red Blood Cell (uninfected)
-- Trophozoite
-- Schizont
-- Difficult
-- Ring
-- Leukocyte (uninfected)
-- Gametocyte
+Class label & set of bounding box coordinates given for each image.
 
-The Red Blood Cell and Leukocyte categories are blood cells that are not infected with the malaria parasite.
+7 Class labels: red blood cell (uninfected), trophozoite, gametocyte, schizont, difficult, ring & leukocyte (uninfected)
+
+<img width="1435" height="221" alt="image" src="https://github.com/user-attachments/assets/17c7e793-07db-444f-9a84-3b8e6f96f47c" />
+
+The Red Blood Cell and Leukocyte classes are blood cells that are not infected with the malaria parasite.
 
 The Trophozoite, Schizont, Ring and Gametocyte are different growth stages of the malaria parasite
 
-The difficult category is a growth stage that couldn't be grouped into either of the 4 growth categories.
+The difficult class label is for observed growth stages that couldn't be grouped into either of the 4 growth classes. 
 
 Sample images from the dataset
 
