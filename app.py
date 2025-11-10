@@ -38,14 +38,14 @@ def load_onnx_model(model_path):
         return None
 
 @st.cache_data # Cache class names
-def load_class_names(classes_file):
+def load_class_names(classes_path):
     """Reads class names from a text file."""
     try:
-        with open(classes_file, "r") as f:
+        with open(classes_path, "r") as f:
             return [line.strip() for line in f.readlines()]
     except Exception as e:
         # Include the full path in the error message
-        st.error(f"Error loading class names: {e}. Attempted path: {classes_file}")
+        st.error(f"Error loading class names: {e}. Attempted path: {classes_path}")
         return []
 
 # Load model and classes
