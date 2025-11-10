@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide"
 )
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(Deployment))
 
 # --- CONFIGURATION ---
 model_path = os.path.join(BASE_DIR, "best.onnx")
