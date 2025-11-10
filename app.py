@@ -50,7 +50,7 @@ def load_class_names(classes_file):
 
 # Load model and classes
 net = load_onnx_model(model_path)
-class_names = load_class_names(classes_file)
+class_names = load_class_names(classes_path)
 
 st.title("🔬 Malaria Parasite (P.vivax) Detection using YOLOV8n)")
 
