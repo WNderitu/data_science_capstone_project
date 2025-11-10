@@ -11,17 +11,16 @@ st.set_page_config(
     layout="wide"
 )
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Find the absolute path of the root directory (one level up from BASE_DIR/Deployment)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__)) # This is still the Deployment folder path
+
+# To reference the root, we must go up one level:
+ROOT_DIR = os.path.dirname(BASE_DIR)
 
 # --- CONFIGURATION ---
-model_path = os.path.join(BASE_DIR, "best.onnx")
-classes_file = os.path.join(BASE_DIR, "classes.txt")
-
-# --- DEBUGGING STEP (Temporary) ---
-st.sidebar.warning(f"CWD: {os.getcwd()}")
-st.sidebar.warning(f"BASE_DIR: {BASE_DIR}") 
-st.sidebar.warning(f"Classes Path: {classes_file}")
-# -----------------------------------
+# Now, join the file names from the ROOT_DIR
+model_path = os.path.join(ROOT_DIR, "best.onnx") # Use best.onnx name
+classes_file = os.path.join(ROOT_DIR, "classes.txt")
 
 @st.cache_resource # Cache the model loading
 def load_onnx_model(model_path):
