@@ -11,16 +11,20 @@ st.set_page_config(
     layout="wide"
 )
 
-# Find the absolute path of the root directory (one level up from BASE_DIR/Deployment)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__)) # This is still the Deployment folder path
+base_path = os.path.dirname(__file__)
+model_path = os.path.join(base_path,'best.onnx')
+classes_path = os.path.join(base_path,'classes.txt')
 
-# To reference the root, we must go up one level:
-ROOT_DIR = os.path.dirname(BASE_DIR)
+# Check if files exist
+if not os.path.exists(model_path):
+    st.error(f"ONNX model not found at: {model_path}")
+else:
+    st.success("ONNX model loaded successfully.")
 
-# --- CONFIGURATION ---
-# Now, join the file names from the ROOT_DIR
-model_path = os.path.join(ROOT_DIR, "best.onnx") # Use best.onnx name
-classes_file = os.path.join(ROOT_DIR, "classes.txt")
+if not os.path.exists(classes_path):
+    st.error(f"Class names file not found at: {classes_path}")
+else:
+    st.success("Class names file loaded successfully.")
 
 @st.cache_resource # Cache the model loading
 def load_onnx_model(model_path):
