@@ -1,7 +1,5 @@
 # Plasmodium Vivax (malaria) parasite detector and counter using YOLOv8 Model
 
-## Project Overview
-
 ## Introduction
 
 Malaria, a life-threatening disease caused by Plasmodium parasites transmitted by female Anopheles mosquitoes, is most commonly found in tropical and subtropical regions. In 2023, the African Region was home to 94% and 95% of malaria cases and deaths, respectively. Sub-Saharan Africa carries a disproportionately high share of the global malaria burden. Plasmodium vivax is one of the 5 parasites that cause malaria associated with disease relapses due to dormant liver stages, contributing significantly to morbidity.  
@@ -54,7 +52,6 @@ Sample images from the dataset
 
 ## Project Description
 This project employs YOLOv8 for multiclass object detection, leveraging its advanced capabilities to accurately identify and localize multiple object types within images or video frames.
-
 
 ## Deep learning Model Architecture
 
