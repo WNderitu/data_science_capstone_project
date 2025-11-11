@@ -65,9 +65,9 @@ Recall = TP / (TP + FN)
 
 <img width="214" height="35" alt="Screenshot 2025-11-02 at 17 57 44" src="https://github.com/user-attachments/assets/293697af-cd78-4848-9c66-97ac24540aca" />
 
- **mAP@0.5** — IoU threshold = 0.5 (i.e., boxes overlap ≥ 50% to count as correct) - mean average precision calculated at a fixed IOU threshold of 0.50. This generally assesses whether the model can generaly detect the presence and approximate location of an object, and is a less less stric metric. 
+- **mAP@0.5** — IoU threshold = 0.5 (i.e., boxes overlap ≥ 50% to count as correct) - mean average precision calculated at a fixed IOU threshold of 0.50. This generally assesses whether the model can generaly detect the presence and approximate location of an object, and is a less less stric metric. 
  
- **mAP@0.5:0.95** — Mean mAP across IoU thresholds 0.5 to 0.95 (step 0.05) - average of the mean average precision calculated across multiple IoU thresholds, ranging from 0.50 to 0.95 in steps of 0.05 (i.e 0.50, 0.55, 0.60,...,0.95). 
+- **mAP@0.5:0.95** — Mean mAP across IoU thresholds 0.5 to 0.95 (step 0.05) - average of the mean average precision calculated across multiple IoU thresholds, ranging from 0.50 to 0.95 in steps of 0.05 (i.e 0.50, 0.55, 0.60,...,0.95). 
 
 Other metrics to help understand mAP@0.5 & mAP@0.5-0.95 performance metrics in YOLOv8:
 - **Intersection over Union (IoU)**: This measures the overlap between the model's predicted bounding box and the actual ground truth bounding box. An IoU of 1 means perfect overlap, while 0 means no overlap. A common threshold (e.g., 0.5) is set to consider a detection as a True Positive. Higher IoU = better localization accuracy. 
