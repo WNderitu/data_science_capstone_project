@@ -25,6 +25,7 @@ The detection of Plasmodium vivax malaria remains challenging, primarily due to 
 - Images obtained from Broad Bioimage Benchmark Collection website <https://bbbc.broadinstitute.org/BBBC041/>
 - The dataset consists of image folder, training json file & test json file
 - There are 1,328 microscopic images of blood smears.
+- Image resolution:1600x1200
 - Class label & set of bounding box coordinates given for each image.
 - 7 Class labels: red blood cell (uninfected), trophozoite, gametocyte, schizont, difficult, ring & leukocyte (uninfected)
 - The Red Blood Cell and Leukocyte classes are blood cells that are not infected with the malaria parasite.
@@ -64,10 +65,12 @@ Recall = TP / (TP + FN)
 
 <img width="214" height="35" alt="Screenshot 2025-11-02 at 17 57 44" src="https://github.com/user-attachments/assets/293697af-cd78-4848-9c66-97ac24540aca" />
 
-- **Mean Average Precision (mAP)**: This is the average of the Average Precisions (APs) across all the different classes. It provides an overall measure of the model's performance across all object categories. In YOLOv8, the **mAP@0.5** — IoU threshold = 0.5 (i.e., boxes overlap ≥ 50% to count as correct) and **mAP@0.5:0.95** — Mean mAP across IoU thresholds 0.5 to 0.95 (step 0.05) will be presented. 
+ **mAP@0.5** — IoU threshold = 0.5 (i.e., boxes overlap ≥ 50% to count as correct) - mean average precision calculated at a fixed IOU threshold of 0.50. This generally assesses whether the model can generaly detect the presence and approximate location of an object, and is a less less stric metric. 
+ 
+ **mAP@0.5:0.95** — Mean mAP across IoU thresholds 0.5 to 0.95 (step 0.05) - average of the mean average precision calculated across multiple IoU thresholds, ranging from 0.50 to 0.95 in steps of 0.05 (i.e 0.50, 0.55, 0.60,...,0.95). 
 
-Other metrics to help understanf the metrics in YOLOv8:
-- **Intersection over Union (IoU)**: This measures the overlap between the model's predicted bounding box and the actual ground truth bounding box. An IoU of 1 means perfect overlap, while 0 means no overlap. A common threshold (e.g., 0.5 or 0.75) is set to consider a detection as a True Positive. Higher IoU = better localization accuracy. This will be used to determine whether a prediction counts as a correct detection.
+Other metrics to help understand mAP@0.5 & mAP@0.5-0.95 performance metrics in YOLOv8:
+- **Intersection over Union (IoU)**: This measures the overlap between the model's predicted bounding box and the actual ground truth bounding box. An IoU of 1 means perfect overlap, while 0 means no overlap. A common threshold (e.g., 0.5) is set to consider a detection as a True Positive. Higher IoU = better localization accuracy. 
 
 <img width="172" height="38" alt="Screenshot 2025-11-02 at 17 58 54" src="https://github.com/user-attachments/assets/7a788e3c-8038-46ee-90b7-c98468378cb3" />
 
