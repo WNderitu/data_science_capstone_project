@@ -169,7 +169,7 @@ def process_image(net, image, conf_threshold, class_names):
         return img_cv, class_counts
     
     # Apply Non-Maximum Suppression (NMS) to remove overlapping boxes
-    indices = cv2.dnn.NMSBoxes(boxes, confidences, conf_threshold, 0.9)
+    indices = cv2.dnn.NMSBoxes(boxes, confidences, conf_threshold, 0.35)
 
     # Safely convert indices to a flat list of integers.
     # This handles cases where NMS returns a 1D, 2D, or even an empty array.
