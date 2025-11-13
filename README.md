@@ -122,17 +122,21 @@ Three trains/iterations were done using the YOLOv8N model. The parameters applie
 #### Error Analysis
 
 <img width="310" height="229" alt="image" src="https://github.com/user-attachments/assets/8164c651-ff25-4769-bfd6-3c04f8d1d0b6" />
+
 <img width="443" height="147" alt="Screenshot 2025-11-13 at 20 33 38" src="https://github.com/user-attachments/assets/bcbdc428-4114-4c61-909a-df2f2b8ea756" />
+
 Train 1
 - Rapid drop to ~2.9 (train) & ~2.4 (val), curves closely follow each other, val loss consistently below train loss, good convergence (~ epoch 100 – 150)  slight underfit to train set. Best results - epoch 209, early stop: 229/300
 
 <img width="318" height="222" alt="image" src="https://github.com/user-attachments/assets/fbdd5a35-e733-43ec-84fa-e6b49563ce16" />
+
 <img width="420" height="148" alt="Screenshot 2025-11-13 at 20 34 05" src="https://github.com/user-attachments/assets/aebc66ff-3fdd-4897-b8e2-c965ceddb51e" />
 
 Train 2
 - Rapid drop to ~ 3.5 (train) & ~4.1(val), curves closely follow each other – minimal overfitting & model learning well, good convergence, gap small & stable – good generalization. Best results - epoch 100, early stop: 250/300
 
 <img width="324" height="226" alt="image" src="https://github.com/user-attachments/assets/b03bd8cf-4f97-4aa2-ada5-5b60ee9f456f" />
+
 <img width="418" height="148" alt="Screenshot 2025-11-13 at 20 34 24" src="https://github.com/user-attachments/assets/aeec41f5-00fd-4e43-8ad0-b0a7e2856668" />
 
 Train 3
