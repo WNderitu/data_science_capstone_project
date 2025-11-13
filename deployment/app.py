@@ -193,7 +193,7 @@ if uploaded_files and net and class_names:
                 st.info(f"**Total Objects Counted:** {total_detections}")
 
                 # Class Count Overview
-                st.markdown("#### 🧫 Class Counts per Image") # Use a smaller heading
+                st.markdown("#### 🧫 Class Counts per Image")
                 cols = st.columns(3) 
                 all_classes = ['red blood cell', 'trophozoite', 'ring', 'schizont', 'gametocyte', 'leukocyte', 'difficult']
 
@@ -201,7 +201,7 @@ if uploaded_files and net and class_names:
                 for idx, class_name in enumerate(all_classes):
                     count = class_counts.get(class_name, 0)
     
-                    # Use the modulo operator (%) to distribute items into the 4 columns
+                    # Use the modulo operator (%) to distribute items into the 3 columns
                     with cols[idx % 3]:
                         # Use st.caption and st.code for a very compact, non-metric look
                         # st.caption gives the title, and st.markdown gives the bold count
@@ -225,7 +225,7 @@ if uploaded_files and net and class_names:
                     else:
                         x_field = "Percentage"
                         x_title = "Detections (%)"
-                        chart_title = "Detection Percentage per Class"
+                        chart_title = "Detection % per Class"
                     
                     # Build chart
                     chart = (
