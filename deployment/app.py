@@ -191,6 +191,7 @@ if uploaded_files and net and class_names:
                     # Calculate percentages
                     total = counts_df["Count"].sum()
                     counts_df["Percentage"] = (counts_df["Count"] / total) * 100 if total > 0 else 0
+                    
                     # Sidebar toggle for chart mode
                     chart_mode = st.sidebar.radio(
                         'Chart Mode',
