@@ -10,7 +10,8 @@ Diagnosis of Plasmodium vivax malaria relies on examining stained blood smears v
 
 <img width="755" height="472" alt="image" src="https://github.com/user-attachments/assets/d55d4034-1d38-4192-a656-e65af73a03a8" />
 
-Plasmodium Vivax Lifecycle.
+
+Plasmodium Vivax Lifecycle
 
 ## Problem Statement
 
