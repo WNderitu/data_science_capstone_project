@@ -200,4 +200,5 @@ if uploaded_files and net and class_names:
                 mime="text/csv",
                 help="Export per-image counts and parasitemia rates."
             )
-elif
+elif not net:
+    st.error("ONNX model could not be loaded. Please check the path and file integrity.")
