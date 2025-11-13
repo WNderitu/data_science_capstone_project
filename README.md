@@ -38,7 +38,9 @@ The detection of Plasmodium vivax malaria remains challenging, primarily due to 
 - The difficult class label is for observed growth stages that couldn't be grouped into either of the 4 growth classes.
 - Sample images from the dataset
 
-<img width="1293" height="1990" alt="image" src="https://github.com/user-attachments/assets/9dc47e0e-80c5-4288-9cdb-bfd8a2b09387" />
+<img width="491" height="325" alt="image" src="https://github.com/user-attachments/assets/24c25e2a-f8b3-47c6-837b-bb9d800e3430" />
+
+<img width="447" height="319" alt="image" src="https://github.com/user-attachments/assets/dfdab58d-827d-496b-8da6-bcee41ffbd42" />
 
 ## Project Description
 This project employs YOLOv8 for multiclass object detection, leveraging its advanced capabilities to accurately identify and localize multiple object types within images or video frames.
