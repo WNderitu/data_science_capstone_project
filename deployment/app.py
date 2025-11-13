@@ -12,12 +12,13 @@ st.set_page_config(
     page_title="Malaria Parasite (P.vivax) Detector using YOLOv8n",
     layout="wide"
 )
---- File Paths ---
+
+# --- File Paths ---
 base_path = os.path.dirname(__file__)
 model_path = os.path.join(base_path, 'best.onnx')
 classes_path = os.path.join(base_path, 'classes.txt')
 
---- Validate Files ---
+# --- Validate Files ---
 # Check if files exist
 if not os.path.exists(model_path):
     st.error(f"ONNX model not found at: {model_path}")
