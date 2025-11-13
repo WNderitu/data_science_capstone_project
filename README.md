@@ -8,6 +8,10 @@ The Plasmodium vivax lifecycle alternates between humans and Anopheles mosquitoe
 
 Diagnosis of Plasmodium vivax malaria relies on examining stained blood smears via microsocopy and rapid diagnostic tests, with accurate detection being key to effective treatment and relapse prevention. Advanced methods like deep learning models, such as  Regional Based CNN, YOLOv8, and others would offer improved reliability and efficiency in identifying infections.
 
+<img width="755" height="472" alt="image" src="https://github.com/user-attachments/assets/d55d4034-1d38-4192-a656-e65af73a03a8" />
+
+Plasmodium Vivax Lifecycle.
+
 ## Problem Statement
 
 The detection of Plasmodium vivax malaria remains challenging, primarily due to the morphological similarities between parasite stages and other blood components observed in microscopic images. Conventional microscopy is a labor-intensive process that is susceptible to human error and demands specialized expertise, which may be limited in under-resourced settings. Consequently, there is an urgent need for automated, efficient, and dependable solutions capable of detecting and quantifying Plasmodium vivax parasites and their developmental stages within blood smears. Such advancements would enhance diagnostic accuracy, promote effective treatment, and strengthen malaria control initiatives.
