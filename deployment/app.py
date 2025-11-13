@@ -213,7 +213,7 @@ if uploaded_files and net and class_names:
                         alt.Chart(counts_df)
                         .mark_bar()
                         .encode(
-                            x=alt.X(f" {x_field}:Q, title=x_title),
+                            x=alt.X(f"{x_field}:Q", title=x_title),
                             y=alt.Y("Class:N", sort='-x', title="Class Name"),
                             color=alt.Color("Class:N",legend=None),
                             tooltip=[
