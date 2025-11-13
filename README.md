@@ -77,6 +77,7 @@ Other metrics to help understand mAP@0.5 & mAP@0.5-0.95 performance metrics in Y
 ## Results
 
 The model is deployed on streamlit at <https://datasciencecapstoneproject-ecwfxwj4qhafsrktpxjvnv.streamlit.app/>
+https://datasciencecapstoneproject-ecwfxwj4qhafsrktpxjvnv.streamlit.app/?embed_options=show_toolbar
 
 ## Recommendations/Next Steps
 
