@@ -193,26 +193,23 @@ if uploaded_files and net and class_names:
                 st.info(f"**Total Objects Counted:** {total_detections}")
 
                 # Class Count Overview
-                # st.markdown("### 🧫 Class Counts Overview")
-                # # Create 3 columns for a denser overview
-                # cols = st.columns(3)
-                # items = list(class_counts.items())
+                st.markdown("##### 🧫 Class Counts per Image") # Use a smaller heading
+                # Use 4 columns for a compact look within the narrow col_data
+                cols = st.columns(4) 
+                all_classes = ['red blood cell', 'trophozoite', 'ring', 'schizont', 'gametocyte', 'leukocyte', 'difficult']
 
-                # # Iterate over the list in steps of 3
-                # for idx in range(0, len(items), 3):
-                #     # Column 1 (always exists)
-                #     class_name_c1, count_c1 = items[idx]
-                #     cols[0].markdown(f"**{class_name_c1.title()}:** {count_c1}")
-
-                #     # Column 2 (if exists)
-                #     if idx + 1 < len(items):
-                #         class_name_c2, count_c2 = items[idx+1]
-                #         cols[1].markdown(f"**{class_name_c2.title()}:** {count_c2}")
+                # Iterate through the defined classes for consistent order
+                for idx, class_name in enumerate(all_classes):
+                    count = class_counts.get(class_name, 0)
     
-                #     # Column 3 (if exists)
-                #     if idx + 2 < len(items):
-                #         class_name_c3, count_c3 = items[idx+2]
-                #         cols[2].markdown(f"**{class_name_c3.title()}:** {count_c3}")
+                    # Use the modulo operator (%) to distribute items into the 4 columns
+                    with cols[idx % 4]:
+                        # Use st.caption and st.code for a very compact, non-metric look
+                        # st.caption gives the title, and st.markdown gives the bold count
+                        st.caption(class_name.title())
+                        st.markdown(f"**{count}**")
+
+                st.markdown("---") 
                         
                 # Bar Chart
                 counts_df = pd.DataFrame(list(class_counts.items()), columns=["Class", "Count"])
