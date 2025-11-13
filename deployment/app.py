@@ -194,7 +194,7 @@ if uploaded_files and net and class_names:
 
                 # Class Count Overview
                 st.markdown("##### 🧫 Class Counts per Image")
-                cols = st.columns(5) 
+                cols = st.columns(3) 
                 all_classes = ['red blood cell', 'trophozoite', 'ring', 'schizont', 'gametocyte', 'leukocyte', 'difficult']
 
                 # Iterate through the defined classes for consistent order
@@ -202,7 +202,7 @@ if uploaded_files and net and class_names:
                     count = class_counts.get(class_name, 0)
     
                     # Use the modulo operator (%) to distribute items into the 3 columns
-                    with cols[idx % 5]:
+                    with cols[idx % 3]:
                         # Use st.caption and st.code for a very compact, non-metric look
                         # st.caption gives the title, and st.markdown gives the bold count
                         st.caption(class_name.title())
@@ -233,10 +233,10 @@ if uploaded_files and net and class_names:
                         .mark_bar()
                         .encode(
                             x=alt.X(f"{x_field}:Q", title=x_title),
-                            y=alt.Y("class:N", sort='-x', title="Class Name"),
+                            y=alt.Y("Class:N", sort='-x', title="Class Name"),
                             color=alt.Color("class:N",legend=None),
                             tooltip=[
-                                alt.Tooltip('class:N',title="class"),
+                                alt.Tooltip('Class:N',title="Class"),
                                 alt.Tooltip("Count:Q", title="Count"),
                                 alt.Tooltip("Percentage:Q", title="Percentage", format=".2f")
                             ]
