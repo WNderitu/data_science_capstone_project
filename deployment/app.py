@@ -216,7 +216,7 @@ if uploaded_files and net and class_names:
                         .encode(
                             x=alt.X(x_field,title=x_title),
                             y=alt.Y("Class:N", sort='-x', title="Class Name"),
-                            color=alt.Color("Class:N", legend=None)
+                            color=alt.Color("Class:N", legend=None),
                             tooltip=['class','count',alt.Tooltip("Percentage:Q", format=".2f")]
                         )
                         .properties(
