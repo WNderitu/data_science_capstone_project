@@ -196,7 +196,8 @@ if uploaded_files and net and class_names:
                 st.subheader("### 🧫 Class Counts Overview")
                 cols = st.columns(3)
                 for idx, (class_name, count) in enumerate(class_counts.items()):
-                    cols[idx].metric(label=class_name.title(), value=count)
+                    with cols[idx % 3]:
+                        st.metric(label=class_name.title(), value=count
                         
                 # Bar Chart
                 counts_df = pd.DataFrame(list(class_counts.items()), columns=["Class", "Count"])
