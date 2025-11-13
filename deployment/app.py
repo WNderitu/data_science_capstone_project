@@ -169,7 +169,6 @@ if uploaded_files and net and class_names:
                 st.markdown(f"### 🧪 Results for **{file.name}**")
                 
                 parasite_stages = ['trophozoite','ring','schizont','gametocyte','difficult']
-                st.info(f"**Total Objects Counted:** {total_detections}")
                 total_parasite_count = sum(class_counts.get(stage,0) for stage in parasite_stages)
                 total_detections = sum(class_counts.values())
                 parasitemia = (total_parasite_count/total_detections)*100 if total_detections>0 else 0.0
@@ -177,6 +176,7 @@ if uploaded_files and net and class_names:
                 
                 st.metric("**Total Parasite Count (All Stages)**", total_parasite_count)
                 st.metric("**Estimated Parasitemia Rate**", parasitemia_display)
+                st.info(f"**Total Objects Counted:** {total_detections}")
 
                 # Class Count Overview
                 st.markdown("### 🧫 Class Counts Overview")
