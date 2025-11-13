@@ -175,7 +175,13 @@ if uploaded_files and net and class_names:
                 parasitemia_display = f"{parasitemia:.2f} %"
                 
                 st.metric("**Total Parasite Count (All Stages)**", total_parasite_count)
-                st.metric("**Estimated Parasitemia Rate**", parasitemia_display)
+                st.metric("
+                label='**Estimated Parasitemia Rate**',
+                value=parasitemia_display,
+                help=("Calculated as:\n\n"
+                "((Total Parasite Count ÷ Total Detections) × 100\n\n"
+                "It estimates the proportion of infected cells among all detected cells."
+                )
                 st.info(f"**Total Objects Counted:** {total_detections}")
 
                 # Class Count Overview
