@@ -241,7 +241,7 @@ if uploaded_files and net and class_names:
                                 alt.Tooltip("Percentage:Q", title="Percentage", format=".2f")
                             ]
                         )
-                        .properties(width="container",height=200,title=chart_title)
+                        .properties(width="container",height=300,title=chart_title)
                     )
                     st.altair_chart(chart, use_container_width=True)
                 else:
