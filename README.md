@@ -170,7 +170,7 @@ When the best model was used to detect objects and count on test images, the mod
 
 Based on the evaluation metrics on the test set of images, the best model from train_1 iteration was selected & saved in ONNX format. 
 
-### Deploymnet
+### Deployment
 
 The model is deployed on streamlit at <https://datasciencecapstoneproject-ecwfxwj4qhafsrktpxjvnv.streamlit.app/#class-counts-overview>
 
@@ -190,7 +190,7 @@ Malaria infected blood smear images are inherently (naturally) highly imbalanced
 <img width="944" height="535" alt="Screenshot 2025-11-13 at 20 29 53" src="https://github.com/user-attachments/assets/bc6929fb-467f-4c23-80f5-6e068a751d8a" />
 
 ## Recommendations/Future work
-1.Use malaria dataset as is
+1. Use malaria dataset as is
 2. Use larger YOLOv8 model e.g. medium variant
 3. Use 2 stages for detecting & classifying malaria parasites
   - 1st stage: detect uninfected red blood cells vs. infected red blood cells with YOLOv8 model
