@@ -150,7 +150,7 @@ uploaded_files = st.file_uploader("Choose one or more image files", type=['jpg',
 
 if uploaded_files and net and class_names:
     st.subheader(f"Processing {len(uploaded_files)} Images...")
-    if st.button(" ▶️ Run detection"):
+    if st.button("  ▶️  Run detection"):
         progress_bar = st.progress(0)
         total_images = len(uploaded_files)
         results_summary = []  # Collect results for CSV export
@@ -187,19 +187,41 @@ if uploaded_files and net and class_names:
                         
                 # Bar Chart
                 counts_df = pd.DataFrame(list(class_counts.items()), columns=["Class", "Count"])
-                if not counts_df.empty:
+                if not counts_df.empty
+                    # Calculate percentages
+                    total = counts_df["Count"].sum()
+                    counts_df["Percentage"] = (counts_df["Count"] / total) * 100 if total > 0 else 0
+                    # Sidebar toggle for chart mode
+                    chart_mode = st.sidebar.radio(
+                        'Chart Mode',
+                        options=['Counts','Percentages'],
+                        index=0,
+                        help='Switch between raw counts and normalised percentages'
+                    )
+                    # Choose which column to plot nased on mode
+                    if chart_mode == 'Counts':
+                        x_field = "Count:Q"
+                        x_title = "Number of Detections"
+                        chart_title = "Detection Counts per Class"
+                    else:
+                        x_field = "Percentage:Q"
+                        x_title = "Detections (%)"
+                        chart_title = "Detection Percentage per Class"
+                    
+                    # Build chart
                     chart = (
                         alt.Chart(counts_df)
                         .mark_bar()
                         .encode(
-                            x=alt.X("Count:Q", title="Number of Detections"),
+                            x=alt.X(x_field,title=x_title),
                             y=alt.Y("Class:N", sort='-x', title="Class Name"),
                             color=alt.Color("Class:N", legend=None)
+                            tooltip=['class','count',alt.Tooltip("Percentage:Q", format=".2f")]
                         )
                         .properties(
                             width="container",
                             height=300,
-                            title="Detection Counts per Class"
+                            title="chart_title"
                         )
                     )
                     st.altair_chart(chart, use_container_width=True)
