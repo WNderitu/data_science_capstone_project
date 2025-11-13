@@ -193,11 +193,19 @@ if uploaded_files and net and class_names:
                 st.info(f"**Total Objects Counted:** {total_detections}")
 
                 # Class Count Overview
-                st.subheader("### 🧫 Class Counts Overview")
-                cols = st.columns(3)
-                for idx, (class_name, count) in enumerate(class_counts.items()):
-                    with cols[idx % 3]:
-                        st.metric(label=class_name.title(), value=count)
+                st.markdown("### 🧫 Class Counts Overview")
+                cols = st.columns(2)
+                items = list(class_counts.items())
+                
+                for idx in range(0, len(items), 2):
+                    # Left column item
+                    class_name_l, count_l = items[idx]
+                    cols[0].markdown(f"**{class_name_l.title()}:** {count_l}")
+
+                    # Right column item (if exists)
+                    if idx + 1 < len(items):
+                        class_name_r, count_r = items[idx+1]
+                        cols[1].markdown(f"**{class_name_r.title()}:** {count_r}")
                         
                 # Bar Chart
                 counts_df = pd.DataFrame(list(class_counts.items()), columns=["Class", "Count"])
