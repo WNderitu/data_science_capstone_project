@@ -261,6 +261,13 @@ if uploaded_files and net and class_names:
                 })
 
             st.divider()
+            st.subheader("🧫 Class Counts Overview")
+            cols = st.columns(7) # Use 7 columns for 7 classes for maximum spread
+
+            # Use st.metric for the clean box look
+            for idx, (class_name, count) in enumerate(class_counts.items()):
+                with cols[idx]:
+                    st.metric(label=class_name.title(), value=count)
             progress_bar.progress((i+1)/total_images)
 
         progress_bar.empty()
