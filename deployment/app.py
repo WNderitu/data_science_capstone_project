@@ -169,6 +169,7 @@ if uploaded_files and net and class_names:
                 st.markdown(f"### 🧪 Results for **{file.name}**")
                 
                 parasite_stages = ['trophozoite','ring','schizont','gametocyte','difficult']
+                st.info(f"**Total Objects Counted:** {total_detections}")
                 total_parasite_count = sum(class_counts.get(stage,0) for stage in parasite_stages)
                 total_detections = sum(class_counts.values())
                 parasitemia = (total_parasite_count/total_detections)*100 if total_detections>0 else 0.0
@@ -176,7 +177,6 @@ if uploaded_files and net and class_names:
                 
                 st.metric("**Total Parasite Count (All Stages)**", total_parasite_count)
                 st.metric("**Estimated Parasitemia Rate**", parasitemia_display)
-                st.info(f"**Total Objects Counted:** {total_detections}")
 
                 # Class Count Overview
                 st.markdown("### 🧫 Class Counts Overview")
@@ -195,17 +195,16 @@ if uploaded_files and net and class_names:
                     # Sidebar toggle for chart mode
                     chart_mode = st.sidebar.radio(
                         'Chart Mode',
-                        options=['Counts','Percentages'],
-                        index=0,
-                        help='Switch between raw counts and normalised percentages'
-                    )
+                        ['Counts','Percentages'],
+                        index=0)
+                        
                     # Choose which column to plot nased on mode
                     if chart_mode == 'Counts':
-                        x_field = "Count:Q"
+                        x_field = "Count"
                         x_title = "Number of Detections"
                         chart_title = "Detection Counts per Class"
                     else:
-                        x_field = "Percentage:Q"
+                        x_field = "Percentage"
                         x_title = "Detections (%)"
                         chart_title = "Detection Percentage per Class"
                     
@@ -214,16 +213,16 @@ if uploaded_files and net and class_names:
                         alt.Chart(counts_df)
                         .mark_bar()
                         .encode(
-                            x=alt.X(x_field,title=x_title),
+                            x=alt.X(f" {x_field}:Q, title=x_title),
                             y=alt.Y("Class:N", sort='-x', title="Class Name"),
-                            color=alt.Color("Class:N", legend=None),
-                            tooltip=['class','count',alt.Tooltip("Percentage:Q", format=".2f")]
+                            color=alt.Color("Class:N",legend=None),
+                            tooltip=[
+                                alt.Tooltip('class:N',title="Class"),
+                                alt.Tooltip("Count:Q", title="Count"),
+                                alt.Tooltip("Percentage:Q", title="Percentage", format=".2f")
+                            ]
                         )
-                        .properties(
-                            width="container",
-                            height=300,
-                            title="chart_title"
-                        )
+                        .properties(width="container",height=300,title="chart_title")
                     )
                     st.altair_chart(chart, use_container_width=True)
                 else:
