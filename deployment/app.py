@@ -148,6 +148,14 @@ def process_image(net, image, conf_threshold, nms_threshold, class_names,
 st.header(" 🩸 Upload image of blood smear slide")
 uploaded_files = st.file_uploader("Choose one or more image files", type=['jpg','jpeg','png','bmp'], accept_multiple_files=True)
 
+st.sidebar.header("📊 Chart Settings")
+chart_mode = st.sidebar.radio(
+    'Chart Mode',
+    ['Counts', 'Percentages'],
+    index=0,
+    key='chart_mode_radio'  # unique key to prevent duplicates
+)
+
 if uploaded_files and net and class_names:
     st.subheader(f"Processing {len(uploaded_files)} Images...")
     if st.button("  ▶️  Run detection"):
@@ -162,9 +170,11 @@ if uploaded_files and net and class_names:
                 show_boxes, show_labels, show_only_parasites, color_scheme
             )
             detected_img_rgb = cv2.cvtColor(detected_img_cv, cv2.COLOR_BGR2RGB)
+            
             col_img, col_data = st.columns([2,1])
             with col_img:
                 st.image(detected_img_rgb, caption=f"Processed: {file.name}", use_container_width=True)
+            
             with col_data:
                 st.markdown(f"### 🧪 Results for **{file.name}**")
                 
@@ -195,14 +205,8 @@ if uploaded_files and net and class_names:
                     # Calculate percentages
                     total = counts_df["Count"].sum()
                     counts_df["Percentage"] = (counts_df["Count"] / total) * 100 if total > 0 else 0
-                    
-                    # Sidebar toggle for chart mode
-                    chart_mode = st.sidebar.radio(
-                        'Chart Mode',
-                        ['Counts','Percentages'],
-                        index=0)
-                        
-                    # Choose which column to plot nased on mode
+                                                          
+                    # Choose which column to plot based on mode
                     if chart_mode == 'Counts':
                         x_field = "Count"
                         x_title = "Number of Detections"
@@ -226,7 +230,7 @@ if uploaded_files and net and class_names:
                                 alt.Tooltip("Percentage:Q", title="Percentage", format=".2f")
                             ]
                         )
-                        .properties(width="container",height=300,title="chart_title")
+                        .properties(width="container",height=400,title="chart_title")
                     )
                     st.altair_chart(chart, use_container_width=True)
                 else:
