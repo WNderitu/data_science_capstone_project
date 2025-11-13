@@ -195,7 +195,7 @@ if uploaded_files and net and class_names:
                 # Class Count Overview
                 st.markdown("##### 🧫 Class Counts per Image") # Use a smaller heading
                 # Use 4 columns for a compact look within the narrow col_data
-                cols = st.columns(4) 
+                cols = st.columns(3) 
                 all_classes = ['red blood cell', 'trophozoite', 'ring', 'schizont', 'gametocyte', 'leukocyte', 'difficult']
 
                 # Iterate through the defined classes for consistent order
@@ -203,7 +203,7 @@ if uploaded_files and net and class_names:
                     count = class_counts.get(class_name, 0)
     
                     # Use the modulo operator (%) to distribute items into the 4 columns
-                    with cols[idx % 4]:
+                    with cols[idx % 3]:
                         # Use st.caption and st.code for a very compact, non-metric look
                         # st.caption gives the title, and st.markdown gives the bold count
                         st.caption(class_name.title())
