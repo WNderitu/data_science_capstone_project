@@ -5,17 +5,19 @@ from PIL import Image
 import os
 import pandas as pd
 import io
+import altair as alt
 
 # Set page configuration
 st.set_page_config(
     page_title="Malaria Parasite (P.vivax) Detector using YOLOv8n",
     layout="wide"
 )
-
+--- File Paths ---
 base_path = os.path.dirname(__file__)
 model_path = os.path.join(base_path, 'best.onnx')
 classes_path = os.path.join(base_path, 'classes.txt')
 
+--- Validate Files ---
 # Check if files exist
 if not os.path.exists(model_path):
     st.error(f"ONNX model not found at: {model_path}")
@@ -27,6 +29,7 @@ if not os.path.exists(classes_path):
 else:
     st.success("Class names file loaded successfully.")
 
+# --- Load Model & Classes ---
 @st.cache_resource
 def load_onnx_model(model_path):
     try:
@@ -60,7 +63,7 @@ show_labels = st.sidebar.checkbox("Show Class Labels", value=True)
 show_only_parasites = st.sidebar.checkbox("Show Only Parasite Detections", value=False)
 color_scheme = st.sidebar.selectbox("Color Scheme", ["Default", "High Contrast", "Pastel"], index=0)
 
-# --- Updated process_image ---
+# --- Image Processing Function ---
 def process_image(net, image, conf_threshold, nms_threshold, class_names,
                   show_boxes=True, show_labels=True, show_only_parasites=False, color_scheme="Default"):
     INPUT_WIDTH, INPUT_HEIGHT = 640, 640
@@ -141,12 +144,12 @@ def process_image(net, image, conf_threshold, nms_threshold, class_names,
     return img_cv, class_counts
 
 # --- User Interface ---
-st.header("Upload image of blood smear slide")
+st.header(" 🩸 Upload image of blood smear slide")
 uploaded_files = st.file_uploader("Choose one or more image files", type=['jpg','jpeg','png','bmp'], accept_multiple_files=True)
 
 if uploaded_files and net and class_names:
     st.subheader(f"Processing {len(uploaded_files)} Images...")
-    if st.button("Run detection"):
+    if st.button(" ▶️ Run detection"):
         progress_bar = st.progress(0)
         total_images = len(uploaded_files)
         results_summary = []  # Collect results for CSV export
@@ -162,17 +165,46 @@ if uploaded_files and net and class_names:
             with col_img:
                 st.image(detected_img_rgb, caption=f"Processed: {file.name}", use_container_width=True)
             with col_data:
-                st.markdown(f"### Results for **{file.name}**")
+                st.markdown(f"### 🧪 Results for **{file.name}**")
+                
                 parasite_stages = ['trophozoite','ring','schizont','gametocyte','difficult']
                 total_parasite_count = sum(class_counts.get(stage,0) for stage in parasite_stages)
                 total_detections = sum(class_counts.values())
                 parasitemia = (total_parasite_count/total_detections)*100 if total_detections>0 else 0.0
-                st.metric("Total parasite count", total_parasite_count, f"{total_parasite_count} / {total_detections}")
-                st.metric("Parasitemia Rate", f"{parasitemia:.2f} %")
-                for class_name, count in class_counts.items():
-                    st.metric(f"Count of {class_name.title()}", count)
-                st.info(f"Total Objects Counted: {total_detections}")
+                parasitemia_display = f"{parasitemia:.2f} %"
+                
+                st.metric("**Total Parasite Count (All Stages)**", total_parasite_count)
+                st.metric("**Estimated Parasitemia Rate**", parasitemia_display)
+                st.info(f"**Total Objects Counted:** {total_detections}")
 
+                # Class Count Overview
+                st.markdown("### 🧫 Class Counts Overview")
+                cols = st.columns(3)
+                for idx, (class_name, count) in enumerate(class_counts.items()):
+                    with cols[idx % 3]:
+                        st.metric(label=class_name.title(), value=count)
+                        
+                # Bar Chart
+                counts_df = pd.DataFrame(list(class_counts.items()), columns=["Class", "Count"])
+                if not counts_df.empty:
+                    chart = (
+                        alt.Chart(counts_df)
+                        .mark_bar()
+                        .encode(
+                            x=alt.X("Count:Q", title="Number of Detections"),
+                            y=alt.Y("Class:N", sort='-x', title="Class Name"),
+                            color=alt.Color("Class:N", legend=None)
+                        )
+                        .properties(
+                            width="container",
+                            height=300,
+                            title="Detection Counts per Class"
+                        )
+                    )
+                    st.altair_chart(chart, use_container_width=True)
+                else:
+                    st.warning("No detections found to visualize.")
+                    
                 # Append results for CSV
                 results_summary.append({
                     "Image": file.name,
@@ -186,7 +218,7 @@ if uploaded_files and net and class_names:
             progress_bar.progress((i+1)/total_images)
 
         progress_bar.empty()
-        st.success("Detection complete!")
+        st.success("Detection and quantification complete!")
 
         # --- CSV Export ---
         if results_summary:
@@ -201,4 +233,4 @@ if uploaded_files and net and class_names:
                 help="Export per-image counts and parasitemia rates."
             )
 elif not net:
-    st.error("ONNX model could not be loaded. Please check the path and file integrity.")
+    st.error(" ❌ ONNX model could not be loaded. Please check the path and file integrity.")
