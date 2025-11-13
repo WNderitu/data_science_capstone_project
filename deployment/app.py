@@ -176,7 +176,7 @@ if uploaded_files and net and class_names:
                 st.image(detected_img_rgb, caption=f"Processed: {file.name}", use_container_width=True)
             
             with col_data:
-                st.markdown(f"### 🧪 Results for **{file.name}**")
+                st.markdown(f"##### 🧪 Results for **{file.name}**")
                 
                 parasite_stages = ['trophozoite','ring','schizont','gametocyte','difficult']
                 total_parasite_count = sum(class_counts.get(stage,0) for stage in parasite_stages)
