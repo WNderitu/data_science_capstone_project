@@ -193,26 +193,26 @@ if uploaded_files and net and class_names:
                 st.info(f"**Total Objects Counted:** {total_detections}")
 
                 # Class Count Overview
-                st.markdown("### 🧫 Class Counts Overview")
-                # Create 3 columns for a denser overview
-                cols = st.columns(3)
-                items = list(class_counts.items())
+                # st.markdown("### 🧫 Class Counts Overview")
+                # # Create 3 columns for a denser overview
+                # cols = st.columns(3)
+                # items = list(class_counts.items())
 
-                # Iterate over the list in steps of 3
-                for idx in range(0, len(items), 3):
-                    # Column 1 (always exists)
-                    class_name_c1, count_c1 = items[idx]
-                    cols[0].markdown(f"**{class_name_c1.title()}:** {count_c1}")
+                # # Iterate over the list in steps of 3
+                # for idx in range(0, len(items), 3):
+                #     # Column 1 (always exists)
+                #     class_name_c1, count_c1 = items[idx]
+                #     cols[0].markdown(f"**{class_name_c1.title()}:** {count_c1}")
 
-                    # Column 2 (if exists)
-                    if idx + 1 < len(items):
-                        class_name_c2, count_c2 = items[idx+1]
-                        cols[1].markdown(f"**{class_name_c2.title()}:** {count_c2}")
+                #     # Column 2 (if exists)
+                #     if idx + 1 < len(items):
+                #         class_name_c2, count_c2 = items[idx+1]
+                #         cols[1].markdown(f"**{class_name_c2.title()}:** {count_c2}")
     
-                    # Column 3 (if exists)
-                    if idx + 2 < len(items):
-                        class_name_c3, count_c3 = items[idx+2]
-                        cols[2].markdown(f"**{class_name_c3.title()}:** {count_c3}")
+                #     # Column 3 (if exists)
+                #     if idx + 2 < len(items):
+                #         class_name_c3, count_c3 = items[idx+2]
+                #         cols[2].markdown(f"**{class_name_c3.title()}:** {count_c3}")
                         
                 # Bar Chart
                 counts_df = pd.DataFrame(list(class_counts.items()), columns=["Class", "Count"])
