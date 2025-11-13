@@ -193,7 +193,7 @@ if uploaded_files and net and class_names:
                 st.info(f"**Total Objects Counted:** {total_detections}")
 
                 # Class Count Overview
-                st.markdown("##### 🧫 Class Counts per Image")
+                st.markdown("#### 🧫 Class Counts per Image")
                 cols = st.columns(3) 
                 all_classes = ['red blood cell', 'trophozoite', 'ring', 'schizont', 'gametocyte', 'leukocyte', 'difficult']
 
