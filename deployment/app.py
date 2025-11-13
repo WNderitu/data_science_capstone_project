@@ -193,8 +193,7 @@ if uploaded_files and net and class_names:
                 st.info(f"**Total Objects Counted:** {total_detections}")
 
                 # Class Count Overview
-                st.markdown("##### 🧫 Class Counts per Image") # Use a smaller heading
-                # Use 4 columns for a compact look within the narrow col_data
+                st.markdown("#### 🧫 Class Counts per Image") # Use a smaller heading
                 cols = st.columns(3) 
                 all_classes = ['red blood cell', 'trophozoite', 'ring', 'schizont', 'gametocyte', 'leukocyte', 'difficult']
 
@@ -209,7 +208,7 @@ if uploaded_files and net and class_names:
                         st.caption(class_name.title())
                         st.markdown(f"**{count}**")
 
-                st.markdown("---") 
+                # st.markdown("---") 
                         
                 # Bar Chart
                 counts_df = pd.DataFrame(list(class_counts.items()), columns=["Class", "Count"])
