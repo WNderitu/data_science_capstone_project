@@ -193,8 +193,8 @@ if uploaded_files and net and class_names:
                 st.info(f"**Total Objects Counted:** {total_detections}")
 
                 # Class Count Overview
-                st.markdown("#### 🧫 Class Counts per Image")
-                cols = st.columns(3) 
+                st.markdown("##### 🧫 Class Counts per Image")
+                cols = st.columns(5) 
                 all_classes = ['red blood cell', 'trophozoite', 'ring', 'schizont', 'gametocyte', 'leukocyte', 'difficult']
 
                 # Iterate through the defined classes for consistent order
@@ -202,7 +202,7 @@ if uploaded_files and net and class_names:
                     count = class_counts.get(class_name, 0)
     
                     # Use the modulo operator (%) to distribute items into the 3 columns
-                    with cols[idx % 3]:
+                    with cols[idx % 5]:
                         # Use st.caption and st.code for a very compact, non-metric look
                         # st.caption gives the title, and st.markdown gives the bold count
                         st.caption(class_name.title())
@@ -257,13 +257,6 @@ if uploaded_files and net and class_names:
                 })
 
             st.divider()
-            st.subheader("🧫 Class Counts Overview")
-            cols = st.columns(7) # Use 7 columns for 7 classes for maximum spread
-
-            # Use st.metric for the clean box look
-            for idx, (class_name, count) in enumerate(class_counts.items()):
-                with cols[idx]:
-                    st.metric(label=class_name.title(), value=count)
             progress_bar.progress((i+1)/total_images)
 
         progress_bar.empty()
