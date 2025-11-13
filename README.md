@@ -76,19 +76,111 @@ Other metrics to help understand mAP@0.5 & mAP@0.5-0.95 performance metrics in Y
 
 ## Results
 
-The model is deployed on streamlit at <https://datasciencecapstoneproject-ecwfxwj4qhafsrktpxjvnv.streamlit.app/>
-https://datasciencecapstoneproject-ecwfxwj4qhafsrktpxjvnv.streamlit.app/?embed_options=show_toolbar
+### Data Preparation
 
-## Recommendations/Next Steps
+Class Imabalance was noted in the train, val and test image subsets as shown in the charts below. The imbalance is severe with 96% of the objects being from the red blood cell class. This imbalance is inherent to human blood smears as they have more red blood cells than other cells found in blood. 
 
-## Future work/Suggestions
+<img width="328" height="272" alt="image" src="https://github.com/user-attachments/assets/806b4cf5-4760-439a-af19-f9a34a1ab8d6" />
+
+<img width="328" height="272" alt="image" src="https://github.com/user-attachments/assets/bc3f000b-9c7c-4c79-be59-1668a4564f4d" />
+
+<img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/73eabde2-8a5d-4718-9cdf-9b7ed1bb566d" />
+
+Data preparation that was done is outlined in the table below. 
+
+<img width="911" height="403" alt="image" src="https://github.com/user-attachments/assets/1400c142-084a-4acb-b597-1d8babb4aa9a" />
+
+
+### Model Training
+
+Three trains/iterations were done using the YOLOv8N model. The parameters applied are outlined in the table below:
+
+<img width="911" height="440" alt="image" src="https://github.com/user-attachments/assets/ed8e0b83-89cd-4e78-9834-0f438988efdc" />
+
+### Model Evaluation
+
+<img width="933" height="221" alt="image" src="https://github.com/user-attachments/assets/17ddd65d-c204-450c-af90-bda712e1f322" />
+
+- Overall class precision : Train 2 highest (0.719) - fewest false positives detections
+- Overall recall : Train 1 highest (0.74)  - largest fraction of actual objects detected
+- Overall mAP50  & Overall mAP50-95 : Train 3 – highest (0.743 & 0.626 ). Has better bounding box localization & classification at IoU 0.5 & best at stricter localization, performing well across multiple IoU thresholds (0.5 to 0.95).
+- The 3 models performs well on classes with many instances, but performance drops significantly for rare classes especially schizont & gametocyte classes.
+- Only trophozoite parasite class with good performance
+
+#### Error Analysis
+
+<img width="310" height="229" alt="image" src="https://github.com/user-attachments/assets/8164c651-ff25-4769-bfd6-3c04f8d1d0b6" />
+
+Train 1
+- Rapid drop to ~2.9 (train) & ~2.4 (val), curves closely follow each other, val loss consistently below train loss, good convergence (~ epoch 100 – 150)  slight underfit to train set. Best results - epoch 209, early stop: 229/300
+
+<img width="318" height="222" alt="image" src="https://github.com/user-attachments/assets/fbdd5a35-e733-43ec-84fa-e6b49563ce16" />
+
+Train 2
+- Rapid drop to ~ 3.5 (train) & ~4.1(val), curves closely follow each other – minimal overfitting & model learning well, good convergence, gap small & stable – good generalization. Best results - epoch 100, early stop: 250/300
+
+<img width="324" height="226" alt="image" src="https://github.com/user-attachments/assets/b03bd8cf-4f97-4aa2-ada5-5b60ee9f456f" />
+
+Train 3
+- Gap between curves is  ↑ with ↑ epochs - overfitting. Best results- epoch 183, early stop: 483/500. Model finding it harder to generalize  than to memorize training data. High volatility – struggle to find optimal weights for val set
+- Based on error analysis, train 2 performed the best.
+
+### Model Evaluation on Test Images
+
+<img width="936" height="229" alt="image" src="https://github.com/user-attachments/assets/91737308-6206-493a-80b5-f5f599248597" />
+
+Performance was poor compared to the validation results
+Train 3 could not detect ring, schizont, gametocyte & difficult classes – could not generalize
+Train 1 & 2 could not detect schizont, gametocyte & difficult classes - could not generalize
+Trophozites - Train 1 - highest mAP50 & mAP50-95, Train 3 - highest Precision & Train 2- highest recall
+Ring - Train 1 – best precision, recall , mAP50 & mAP50-95
+Based on this metrics, the best model in this context is Train 1. 
+
+### Predicting on test images
+
+When the best model was used to detect objects and count on test images, the model was noted to have some instances of false positives and classification errors. See image below.
+
+<img width="715" height="439" alt="image" src="https://github.com/user-attachments/assets/f6dc94a0-fccf-45de-9d07-ce5d4e3e49d4" />
+<img width="188" height="162" alt="Screenshot 2025-11-13 at 20 11 48" src="https://github.com/user-attachments/assets/3e2e98e5-2637-42ef-a6d0-d43ace544a6f" />
+
+### Model Selection
+
+Based on the evaluation metrics on the test set of images, the best model from train_1 iteration was selected & saved in ONNX format. 
+
+### Deploymnet
+
+The model is deployed on streamlit at <https://datasciencecapstoneproject-ecwfxwj4qhafsrktpxjvnv.streamlit.app/#class-counts-overview>
+
+### Challenges
+1. Running out of GPU resources on Colab.
+2. Poor model performance (generalization) on test image subset, possibly due to:
+Malaria infected blood smear images are inherently (naturally) highly imbalanced due to dominance of uninfected red blood cells. It therefore difficult to handle class imbalance in this context (not clear how to?)
+3. Highly similar parasite morphological stages
+4. Variations in shape of infected red blood cells containing different lifecycle stages
+5. Use of smaller dataset
+6. Choice of YOLOv8n model (smallest variant, lightweight, optimized for speed & low compute cost (usable on limited GPUs). This is because of the following reasons:
+- The model has lower accuracy especially on complex or small objects. 
+- The model is less robust to noisy/complex data such as small objects i.e microscopic images of parasite stages in red blood cells
+- The model has limited learning capacity – has fewer parameters, may fail to capture nuanced visual features
+- The model is sensitive to augmentation/hyperparameters, therefore careful tuning is needed
+
+<img width="452" height="260" alt="Screenshot 2025-11-13 at 20 01 55" src="https://github.com/user-attachments/assets/8dce977c-237d-446b-9cc7-15834e369543" />
+
+## Recommendations/Future work
+1.Use malaria dataset as is
+2. Use larger YOLOv8 model e.g. medium variant
+3. Use 2 stages for detecting & classifying malaria parasites
+  - 1st stage: detect uninfected red blood cells vs. infected red blood cells with YOLOv8 model
+  - 2nd stage: classify infected red blood cells into various parasite stages with an image classifier model e.g. AlexNet, EfficientNet, GoogLeNet, ResNet , MobileNet, Vision Transformers (ViT) etc..
 
 ## Acknowledgements & Attributions
-
 1. We used image set BBBC041v1, available from the Broad Bioimage Benchmark Collection (Ljosa et al., Nature Methods, 2012)
-2. https://docs.ultralytics.com/datasets/
+2. Image of YOLOv8 model architecture from: https://abintimilsina.medium.com/yolov8-architecture-explained-a5e90a560ce5
+3. Image of P.Vivax lifecylce. Quique Bassat, CC BY 4.0 <https://creativecommons.org/licenses/by/4.0>, via Wikimedia Commons
 
 ## References
 1. https://www.who.int/health-topics/malaria#tab=tab_1
 2. https://docs.ultralytics.com/datasets/
-3. https://abintimilsina.medium.com/yolov8-architecture-explained-a5e90a560ce5
+3. https://abintimilsina.medium.com/yolov8-architecture-explained-a5e90a560ce5]
+4. Link to data: Broad Bioimage Benchmark Collection website https://bbbc.broadinstitute.org/BBBC041/
+
