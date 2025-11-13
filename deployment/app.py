@@ -193,11 +193,10 @@ if uploaded_files and net and class_names:
                 st.info(f"**Total Objects Counted:** {total_detections}")
 
                 # Class Count Overview
-                st.markdown("### 🧫 Class Counts Overview")
+                st.subheader("### 🧫 Class Counts Overview")
                 cols = st.columns(3)
                 for idx, (class_name, count) in enumerate(class_counts.items()):
-                    with cols[idx % 3]:
-                        st.metric(label=class_name.title(), value=count)
+                    cols[idx].metric(label=class_name.title(), value=count)
                         
                 # Bar Chart
                 counts_df = pd.DataFrame(list(class_counts.items()), columns=["Class", "Count"])
@@ -230,7 +229,7 @@ if uploaded_files and net and class_names:
                                 alt.Tooltip("Percentage:Q", title="Percentage", format=".2f")
                             ]
                         )
-                        .properties(width="container",height=400,title="chart_title")
+                        .properties(width="container",height=400,title=chart_title)
                     )
                     st.altair_chart(chart, use_container_width=True)
                 else:
