@@ -187,7 +187,7 @@ if uploaded_files and net and class_names:
                         
                 # Bar Chart
                 counts_df = pd.DataFrame(list(class_counts.items()), columns=["Class", "Count"])
-                if not counts_df.empty
+                if not counts_df.empty:
                     # Calculate percentages
                     total = counts_df["Count"].sum()
                     counts_df["Percentage"] = (counts_df["Count"] / total) * 100 if total > 0 else 0
