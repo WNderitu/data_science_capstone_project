@@ -197,7 +197,7 @@ if uploaded_files and net and class_names:
                 cols = st.columns(3)
                 for idx, (class_name, count) in enumerate(class_counts.items()):
                     with cols[idx % 3]:
-                        st.metric(label=class_name.title(), value=count
+                        st.metric(label=class_name.title(), value=count)
                         
                 # Bar Chart
                 counts_df = pd.DataFrame(list(class_counts.items()), columns=["Class", "Count"])
