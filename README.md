@@ -127,7 +127,7 @@ Three trains/iterations were done using the YOLOv8N model. The parameters applie
 
 
 Train 1
-- Rapid drop to ~2.9 (train) & ~2.4 (val), curves closely follow each other, val loss consistently below train loss, good convergence (~ epoch 100 – 150)  slight underfit to train set. Best results - epoch 209, early stop: 229/300
+- Rapid drop to ~2.9 (train) & ~2.4 (val),curves closely follow each other, validation training loss is consistently below the training loss curve. There is good convergence at around epochs 100 - 150. There is slight underfit to the training set. The best results aee observed at epoch 209. There was early stop at epoch 229/300. 
 
 
 <img width="318" height="222" alt="image" src="https://github.com/user-attachments/assets/fbdd5a35-e733-43ec-84fa-e6b49563ce16" />
