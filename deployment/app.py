@@ -233,10 +233,10 @@ if uploaded_files and net and class_names:
                         .mark_bar()
                         .encode(
                             x=alt.X(f"{x_field}:Q", title=x_title),
-                            y=alt.Y("Class:N", sort='-x', title="Class Name"),
-                            color=alt.Color("Class:N",legend=None),
+                            y=alt.Y("class:N", sort='-x', title="Class Name"),
+                            color=alt.Color("class:N",legend=None),
                             tooltip=[
-                                alt.Tooltip('class:N',title="Class"),
+                                alt.Tooltip('class:N',title="class"),
                                 alt.Tooltip("Count:Q", title="Count"),
                                 alt.Tooltip("Percentage:Q", title="Percentage", format=".2f")
                             ]
