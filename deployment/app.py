@@ -178,11 +178,7 @@ if uploaded_files and net and class_names:
                 st.metric(
                     label='**Estimated Parasitemia Rate**',
                     value=parasitemia_display,
-                    help=(
-                        'Calculated as:\n\n'
-                        '(Total Parasite Count ÷ Total Detections) × 100\n\n'.
-                         It estimates the proportion of infected cells among all detected cells'.
-                        )
+                    help=("Calculated as: (Total Parasite Detections / Total Cell Detections) * 100. It estimates the proportion of infected cells among all detected cells.")
                     )
                 st.info(f"**Total Objects Counted:** {total_detections}")
 
