@@ -194,10 +194,10 @@ if uploaded_files and net and class_names:
 
                 # Class Count Overview
                 st.markdown("### 🧫 Class Counts Overview")
-                cols = st.columns(2)
+                cols = st.columns(3)
                 items = list(class_counts.items())
                 
-                for idx in range(0, len(items), 2):
+                for idx in range(0, len(items), 3):
                     # Left column item
                     class_name_l, count_l = items[idx]
                     cols[0].markdown(f"**{class_name_l.title()}:** {count_l}")
@@ -238,7 +238,7 @@ if uploaded_files and net and class_names:
                                 alt.Tooltip("Percentage:Q", title="Percentage", format=".2f")
                             ]
                         )
-                        .properties(width="container",height=400,title=chart_title)
+                        .properties(width="container",height=300,title=chart_title)
                     )
                     st.altair_chart(chart, use_container_width=True)
                 else:
