@@ -23,12 +23,12 @@ classes_path = os.path.join(base_path, 'classes.txt')
 if not os.path.exists(model_path):
     st.error(f"ONNX model not found at: {model_path}")
 else:
-    st.success("ONNX model loaded successfully.")
+    st.success("✅ ONNX model loaded successfully.")
 
 if not os.path.exists(classes_path):
     st.error(f"Class names file not found at: {classes_path}")
 else:
-    st.success("Class names file loaded successfully.")
+    st.success(" ✅ Class names file loaded successfully.")
 
 # --- Load Model & Classes ---
 @st.cache_resource
@@ -260,7 +260,7 @@ if uploaded_files and net and class_names:
             progress_bar.progress((i+1)/total_images)
 
         progress_bar.empty()
-        st.success("Detection and quantification complete!")
+        st.success(" ✅ Detection and quantification complete!")
 
         # --- CSV Export ---
         if results_summary:
