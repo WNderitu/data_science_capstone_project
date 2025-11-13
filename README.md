@@ -38,6 +38,11 @@ The detection of Plasmodium vivax malaria remains challenging, primarily due to 
 ## Project Description
 This project employs YOLOv8 for multiclass object detection, leveraging its advanced capabilities to accurately identify and localize multiple object types within images or video frames.
 
+## Project Overview
+
+<img width="909" height="225" alt="image" src="https://github.com/user-attachments/assets/93ad134d-cf7d-479a-a33d-67afb28369d8" />
+
+
 ## Deep learning Model Architecture
 
 The You Only Look Once (YOLO) model is a single stage detector that predicts bounding boxes and class probabilities directly from the entire input image in a single forward pass, which makes the model faster than other object detection models. The model treats object detection as a single regression problem. 
