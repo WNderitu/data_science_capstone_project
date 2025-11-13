@@ -183,9 +183,9 @@ if uploaded_files and net and class_names:
                 total_detections = sum(class_counts.values())
                 parasitemia = (total_parasite_count/total_detections)*100 if total_detections>0 else 0.0
                 parasitemia_display = f"{parasitemia:.2f} %"
-                
-                st.markdown("### **Total Parasite Count (All Stages)**", total_parasite_count)
-                st.markdown(f"###
+                               
+                st.markdown("#### **Total Parasite Count (All Stages)**", total_parasite_count)
+                st.metric(
                     label='**Estimated Parasitemia Rate**',
                     value=parasitemia_display,
                     help=("Calculated as: (Total Parasite Detections / Total Cell Detections) * 100. It estimates the proportion of infected cells among all detected cells.")
