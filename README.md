@@ -176,7 +176,7 @@ Malaria infected blood smear images are inherently (naturally) highly imbalanced
 - The model has limited learning capacity – has fewer parameters, may fail to capture nuanced visual features
 - The model is sensitive to augmentation/hyperparameters, therefore careful tuning is needed
 
-<img width="452" height="260" alt="Screenshot 2025-11-13 at 20 01 55" src="https://github.com/user-attachments/assets/8dce977c-237d-446b-9cc7-15834e369543" />
+<img width="944" height="535" alt="Screenshot 2025-11-13 at 20 29 53" src="https://github.com/user-attachments/assets/bc6929fb-467f-4c23-80f5-6e068a751d8a" />
 
 ## Recommendations/Future work
 1.Use malaria dataset as is
