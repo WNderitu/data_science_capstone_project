@@ -90,7 +90,7 @@ Other metrics to help understand mAP@0.5 & mAP@0.5-0.95 performance metrics in Y
 
 ### Data Preparation
 
-Class Imabalance was noted in the train, val and test image subsets as shown in the charts below. The imbalance is severe with 96% of the objects being from the red blood cell class. This imbalance is inherent to human blood smears as they have more red blood cells than other cells found in blood. 
+Class Imbalance was noted in the train, val and test image subsets as shown in the charts below. The imbalance is severe with 96% of the objects being from the red blood cell class. This imbalance is inherent to human blood smears as they have more red blood cells than other cells found in blood. 
 
 <img width="328" height="272" alt="image" src="https://github.com/user-attachments/assets/806b4cf5-4760-439a-af19-f9a34a1ab8d6" />
 
